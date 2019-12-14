@@ -1,10 +1,10 @@
 import React from "react";  
 import {NavLink} from 'react-router-dom';
-import {Container} from './../container'
+import {Container} from './../container';
 
 import {TopBar, Navigation, 
         MiddleBar,
-        BottomBar, NavigationCategory, Search} from './style'
+        BottomBar, NavigationCategory, Search} from './style';
 
 export default class Header extends React.Component { 
     render() {  
