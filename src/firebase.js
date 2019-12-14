@@ -1,4 +1,4 @@
-import firebase from './firebase';
+import firebase from 'firebase';
 require('firebase/firestore');
 
 let firebaseConfig = {
@@ -14,17 +14,14 @@ firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
-export let loadData = () => {
-    let array = [];
-
-    db.collection('products').get()
-        .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-                array.push(doc.data());
-            })
-        })
-
-    return array; 
+export let loadData = () => {   
+    //let array = [];
+    return db.collection('products').get().then(querySnapshot => {
+        let array = [];
+        querySnapshot.forEach(doc => { array.push(doc.data())});
+        return array;
+    })    
+    //return array;
 }
 
 export default firebase;

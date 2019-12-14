@@ -39,6 +39,11 @@ export default class HomePage extends React.Component {
         });
     }
 
+    async componentDidMount() {
+        let q = await loadData();
+        console.log(q);
+    }
+
     render() {  
         return ( 
             <div>
