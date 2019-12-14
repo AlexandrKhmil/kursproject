@@ -6,6 +6,8 @@ import { BannerSlider,
          InfoBannerRow, DiscountPriceBlock, OldPrice, NewPrice, InfoBannerInner,
          SubscribeRow, SubscribeForm } from './style';
 
+import {loadData} from './../../firebase';
+
 const factsList = [
     { title : 'First Shipping',  subtitle : 'Get you every whare', svg : "static/svg/fact_1.svg" },
     { title : 'Secure Store',    subtitle : '100% Secure Store',   svg : "static/svg/fact_2.svg" },

@@ -68,6 +68,7 @@ export const InfoBannerRow = styled.div`
     position: relative;
     display: flex;
     margin-bottom: 76px;
+    height: 420px;
     border: 3px solid ${color.lightGray};
     background: ${color.white};
 `;
@@ -133,7 +134,7 @@ export const InfoBannerInner = styled.div`
 
     p { 
         margin-left: 3px;
-        color: ${color.darkText}
+        color: ${color.darkText};
         font-size: 14px;
         line-height: 21px;
         letter-spacing: 0.3px;
