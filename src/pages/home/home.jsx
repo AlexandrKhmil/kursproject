@@ -1,58 +1,50 @@
 import React from "react"; 
-import { Container } from './../../components/container';  
-import { BannerSlider,
-         FactsWrapper, FactContainer, Fact,
-         ProductSlider,
-         InfoBannerRow, DiscountPriceBlock, OldPrice, NewPrice, InfoBannerInner,
-         SubscribeRow, SubscribeForm } from './style';
 
-import {loadData} from './../../firebase';
+import ProductItem from './../../components/productItem/productItem';
+import { Container } from './../../components/container';
+
+import { FactsWrapper, FactsContainer, Fact } from './factsBlock'; 
+import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './stockBlock';
+import { SubscribeRow, SubscribeForm } from './subscribeBlock';
+
+import { BannerSlider, ProductsBlock } from './style';
+ 
+import { firestoreProducts } from './../../firebase/firebase';
 
 const factsList = [
     { title : 'First Shipping',  subtitle : 'Get you every whare', svg : "static/svg/fact_1.svg" },
     { title : 'Secure Store',    subtitle : '100% Secure Store',   svg : "static/svg/fact_2.svg" },
     { title : 'Save Time',       subtitle : 'Save Your Time',      svg : "static/svg/fact_3.svg" },
     { title : 'Pay on Delivery', subtitle : 'Get you every whare', svg : "static/svg/fact_4.svg" },
-];
+]; 
 
-export default class HomePage extends React.Component { 
+export default class HomePage extends React.Component {  
     constructor(props) {
         super(props);
-        this.state = {
-            emailValue : ''
+        this.state = { 
+            products : [
+                //{ title  : 'Smart Phone  Primo V1', imgSrc : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            ]
         }
-    }
+    } 
 
-    updateEmailValue = e => {
-        this.setState({
-            emailValue: e.target.value
-        });
-    }
-
-    subscribe = e => {
-        // Нужна реализация подписки
-
-        e.preventDefault();
-        console.log(`Было введено ${this.state.emailValue}`);
-        this.setState({
-            emailValue: ''
-        });
-    }
-
-    async componentDidMount() {
-        let q = await loadData();
-        console.log(q);
+    async componentDidMount() { 
+        let loadedProducts = await firestoreProducts; 
+        let products = loadedProducts.map(item => 
+            new Object({ id : item.id, name : item.name, price : item.price, img : item.img })
+        );
+        this.setState({ products : products }); 
     }
 
     render() {  
         return ( 
-            <div>
+            <>
                 <BannerSlider>
                     Тут будет слайдер
                 </BannerSlider>
-
+ 
                 <FactsWrapper>
-                    <FactContainer>
+                    <FactsContainer>
                     {
                         factsList.map((item, key) => 
                             <Fact key={key}>
@@ -62,21 +54,28 @@ export default class HomePage extends React.Component {
                             </Fact>
                         )
                     }
-                    </FactContainer> 
+                    </FactsContainer> 
                 </FactsWrapper>
 
-                <ProductSlider>
-                    Fetured        New Itme        Top Seller        Top Ratting
-                </ProductSlider>
+                <ProductsBlock> 
+                    {
+                        this.state.products.map((item, key) => 
+                            <ProductItem key={key}
+                                         name={item.name} 
+                                         price={item.price}  
+                                         img={item.img} />
+                        )
+                    }  
+                </ProductsBlock>
 
                 <Container>
-                    <InfoBannerRow>
+                    <StockBannerRow>
                         <DiscountPriceBlock> 
                             <OldPrice>$2300</OldPrice>
                             <NewPrice>$1150</NewPrice>
                         </DiscountPriceBlock> 
-                        <img src="static/jpg/InfoBlock.jpg" alt="Info Block Product Image" />
-                        <InfoBannerInner>
+                        <img src="static/jpg/StockBlock.jpg" alt="Stock Block Product Image" />
+                        <StockBannerInner>
                             <h2>50% OFF</h2> 
                             <h3>For Walton Primo GH+</h3>
                             <h4>Power packed performance</h4>
@@ -86,24 +85,24 @@ export default class HomePage extends React.Component {
                                 faster webpage loading, smoother UI transitions and ultra
                                 fast power-up.
                             </p>
-                        </InfoBannerInner> 
-                    </InfoBannerRow>
-                </Container> 
+                        </StockBannerInner> 
+                    </StockBannerRow>
+                </Container>  
 
                 <SubscribeRow>
                     <img src="static/jpg/SubscribeRow.jpg" alt="Subscribe Row Background" />
-                    <h2>SUBCRIBE FOR GET OFFER UPDATE</h2>
+                    <h2>Subscribe for get offer update</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <SubscribeForm onSubmit={this.subscribe}>
+                    <SubscribeForm onSubmit={(e) => { e.preventDefault(); }} /*onSubmit={this.subscribe}*/>
                         <input type="text" 
                                placeholder="Type your email" 
-                               onChange={this.updateEmailValue}
-                               value={this.state.emailValue} 
+                               //onChange={this.updateEmailValue}
+                               //value={this.state.emailValue} 
                         />
                         <input type="submit" value="Lets go!" />
                     </SubscribeForm>
                 </SubscribeRow>
-            </div>
+            </>
         );
     }
 } 

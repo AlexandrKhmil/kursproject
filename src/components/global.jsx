@@ -10,8 +10,10 @@ export const color = {
     semiDark : '#434343',
     darkText : '#484848',
     semiGray : "#f3f3f3",
+    darkSemiGray : '#f1f1f1',
     gray : '#d9d9d9', 
     lightGray : '#efefef',
+    lighterGray : '#e0e0e0',
 
     ultraGreen : '#658c19',
     darkGreen : '#709b1d',

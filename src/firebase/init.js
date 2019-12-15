@@ -12,16 +12,27 @@ let firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-export const db = firebase.firestore();
+// Cloud Firestore
+const db = firebase.firestore();
 
-export let loadData = () => {   
-    //let array = [];
+// Storage
+const storage = firebase.storage(); 
+const storageRef = storage.ref();
+ 
+export let loadData = () => {
     return db.collection('products').get().then(querySnapshot => {
-        let array = [];
+        let array = []; 
         querySnapshot.forEach(doc => { array.push(doc.data())});
         return array;
-    })    
-    //return array;
+    });
+}
+
+export let loadProductImage = src => {
+    const imageRef = storageRef.child(`products/${src}`); 
+    return imageRef.getDownloadURL().then(url => url)
+        .catch(function(error) {
+            console.log(error);
+        }); 
 }
 
 export default firebase;

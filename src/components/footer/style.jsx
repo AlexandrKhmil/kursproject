@@ -1,6 +1,22 @@
 import styled from 'styled-components';
 import {color, time} from '../global'; 
 
+// Top Bar
+
+export const TopBar = styled.div`
+    display: flex;
+    height: 250px;
+    background: ${color.darkSemiGray};
+`;
+
+// Middle Bar
+
+export const MiddleBar = styled.div`
+    display: flex;
+    height: 50px;
+    background: ${color.lighterGray};
+`;
+
 // Bottom Bar
 
 export const BottomBar = styled.div`
