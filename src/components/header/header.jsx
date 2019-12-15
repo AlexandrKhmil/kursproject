@@ -1,15 +1,15 @@
 import React from "react";  
-import {NavLink} from 'react-router-dom';
-import {Container} from './../container';
+import { NavLink } from 'react-router-dom';
+import { Container } from './../container';
 
-import {TopBar, Navigation, 
-        MiddleBar,
-        BottomBar, NavigationCategory, Search} from './style';
+import { TopBar, Navigation } from './topBar';
+import { MiddleBar, MiddleBarInner, Logo, MiddleBarRight, AccountStatusBlock, GreenTextButton, BasketButton } from './middleBar'; 
+import { BottomBar, BottomBarContainer, NavigationCategory, SearchForm} from './bottomBar';
 
 export default class Header extends React.Component { 
     render() {  
         return ( 
-            <div> 
+            <header> 
                 <TopBar>
                     <Container>
                         <Navigation>
@@ -32,13 +32,24 @@ export default class Header extends React.Component {
                 </TopBar>
 
                 <MiddleBar>
-                    <Container>
-                        Блок по центру
-                    </Container>
+                    <MiddleBarInner> 
+                        <Logo to="/" exact={true}>
+                            <span>LO</span>
+                            <span>GO</span>
+                        </Logo> 
+                        <MiddleBarRight> 
+                            <AccountStatusBlock>
+                                <GreenTextButton>Log In</GreenTextButton> or <GreenTextButton>Create Account</GreenTextButton> 
+                            </AccountStatusBlock> 
+                            <BasketButton>
+                                <img src="static/svg/basket.svg" alt="Basket Image" />
+                            </BasketButton>
+                        </MiddleBarRight>
+                    </MiddleBarInner>
                 </MiddleBar>
 
                 <BottomBar>
-                    <Container>
+                    <BottomBarContainer>
                         <NavigationCategory>
                             <ul>
                                 <li>
@@ -61,13 +72,13 @@ export default class Header extends React.Component {
                                 </li>
                             </ul> 
                         </NavigationCategory> 
-                        <Search>
-                            <input type="text" placeholder="Search Your Item........" />
-                            <button>Лупа</button>
-                        </Search>
-                    </Container>
+                        <SearchForm onSubmit={ e => e.preventDefault() }>
+                            <input type="text" placeholder="Search Your Item........" /> 
+                            <button type="submit"><img src="static/svg/search.svg" alt="Search Icon" /></button>
+                        </SearchForm>
+                    </BottomBarContainer>
                 </BottomBar>
-            </div>
+            </header>
         );
     }
 } 

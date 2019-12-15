@@ -13,13 +13,15 @@ let firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Cloud Firestore
+
 const db = firebase.firestore();
 
 // Storage
+
 const storage = firebase.storage(); 
 const storageRef = storage.ref();
  
-// Load Products 
+// Load Products  
 
 const loadProducts = () => {
     // Return array from Cloud Firestore whithout images

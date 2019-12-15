@@ -7,10 +7,12 @@ export const color = {
 
     black : '#000', 
     dark : '#2c4104',
+    lightDark : '#2b2b2b',
     semiDark : '#434343',
     darkText : '#484848',
     semiGray : "#f3f3f3",
     darkSemiGray : '#f1f1f1',
+    placeholderGray: '#898888',
     gray : '#d9d9d9', 
     lightGray : '#efefef',
     lighterGray : '#e0e0e0',

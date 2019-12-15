@@ -94,7 +94,7 @@ export default class HomePage extends React.Component {
                     <h2>Subscribe for get offer update</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     <SubscribeForm onSubmit={(e) => { e.preventDefault(); }} /*onSubmit={this.subscribe}*/>
-                        <input type="text" 
+                        <input type="email" 
                                placeholder="Type your email" 
                                //onChange={this.updateEmailValue}
                                //value={this.state.emailValue} 
