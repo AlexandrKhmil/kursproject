@@ -6,6 +6,7 @@ export const color = {
     whiteTransition : 'rgba(255, 255, 255, 0.5)',
 
     black : '#000', 
+    blackOpacity : 'rgba(0, 0, 0, 0.5)',
     dark : '#2c4104',
     lightDark : '#2b2b2b',
     semiDark : '#434343',

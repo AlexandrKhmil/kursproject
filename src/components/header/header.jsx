@@ -1,31 +1,113 @@
 import React from "react";  
 import { NavLink } from 'react-router-dom';
 import { Container } from './../container';
+import PortalToRoot from '../portalToRoot'; 
 
+import { ModalWrapper, ModalBlock, Close, AuthForm, AuthFormInner } from './modal';
 import { TopBar, Navigation } from './topBar';
 import { MiddleBar, MiddleBarInner, Logo, MiddleBarRight, AccountStatusBlock, GreenTextButton, BasketButton } from './middleBar'; 
 import { BottomBar, BottomBarContainer, NavigationCategory, SearchForm} from './bottomBar';
 
+const topLinks = [
+    { title : 'Home', link : '/' },
+    /*
+    { title : 'My Account', link : '/account' },
+    { title : 'Shopping Cart', link : '/cart' },
+    { title : 'Checkout', link : '/checkout' },
+    */
+]; 
+
+const bottomLinks = [
+    { title : 'Catalog', link : '/catalog' },
+    /*
+    { title : 'Smart Phone', link : '/desktop' },
+    { title : 'Desktop', link : '/desktop' },
+    { title : 'Laptop', link : '/desktop' },
+    { title : 'Accessories', link : '/desktop' },
+    { title : 'Networking', link : '/desktop' },
+    { title : 'Software', link : '/desktop' },
+    */
+]; 
+
 export default class Header extends React.Component { 
+    constructor(props) {
+        super(props);
+        this.state = {
+            authModal : false,
+            regModal : false
+        } 
+        this.authWrapRef = React.createRef();
+        this.regWrapRef = React.createRef();
+    }
+
+    openModal(modal) {
+        this.setState({
+            [modal] : true
+        })
+    }
+
+    closeModal(modal) {
+        this.setState({
+            [modal] : false
+        })
+    }
+
     render() {  
         return ( 
             <header> 
+                <PortalToRoot> 
+                {
+                    (this.state.authModal) ? 
+                    <ModalWrapper ref={this.authWrapRef} onClick={ (e) => { if (this.authWrapRef.current === e.target) this.closeModal('authModal') } }>
+                        <ModalBlock> 
+                            <AuthForm onSubmit={ (e) => e.preventDefault() }> 
+                                <h3>Authorization</h3>
+                                <Close onClick={ () => { this.closeModal('authModal') } }><img src="static/svg/close.svg" alt="close" /></Close>
+                                <AuthFormInner>
+                                    <h4>Email</h4>
+                                    <input type="email" />
+                                    <h4>Password</h4>
+                                    <input type="password" />
+                                    <button type="submit">Enter</button>
+                                </AuthFormInner> 
+                            </AuthForm> 
+                        </ModalBlock>
+                    </ModalWrapper>
+                    : null
+                }  
+                
+                {
+                    (this.state.regModal) ? 
+                    <ModalWrapper ref={this.regWrapRef} onClick={ (e) => { if (this.regWrapRef.current === e.target) this.closeModal('regModal') } }>
+                        <ModalBlock> 
+                            <AuthForm onSubmit={ (e) => e.preventDefault() }> 
+                                <h3>Registration</h3>
+                                <Close onClick={ () => { this.closeModal('regModal') } }><img src="static/svg/close.svg" alt="close" /></Close>
+                                <AuthFormInner>
+                                    <h4>Email</h4>
+                                    <input type="email" />
+                                    <h4>Password</h4>
+                                    <input type="password" />
+                                    <button type="submit">Enter</button>
+                                </AuthFormInner> 
+                            </AuthForm>   
+                        </ModalBlock>
+                    </ModalWrapper>
+                    : null
+                }   
+
+                </PortalToRoot>
+
                 <TopBar>
                     <Container>
                         <Navigation>
                             <ul>
-                                <li>
-                                    <NavLink to="/" activeClassName="active" exact={true}>Home</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/account" activeClassName="active">My Account</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/cart" activeClassName="active">Shopping Cart</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/checkout" activeClassName="active">Checkout</NavLink>
-                                </li>
+                            {
+                                topLinks.map((item, key) => 
+                                <li key={key}>
+                                    <NavLink to={item.link} activeClassName="active" exact={true} >{item.title}</NavLink>
+                                </li>)
+                            } 
                             </ul>
                         </Navigation> 
                     </Container> 
@@ -39,7 +121,7 @@ export default class Header extends React.Component {
                         </Logo> 
                         <MiddleBarRight> 
                             <AccountStatusBlock>
-                                <GreenTextButton>Log In</GreenTextButton> or <GreenTextButton>Create Account</GreenTextButton> 
+                                <GreenTextButton onClick={ () => { this.openModal('authModal') } }>Log In</GreenTextButton> or <GreenTextButton onClick={ () => { this.openModal('regModal') } }>Create Account</GreenTextButton> 
                             </AccountStatusBlock> 
                             <BasketButton>
                                 <img src="static/svg/basket.svg" alt="Basket Image" />
@@ -52,24 +134,12 @@ export default class Header extends React.Component {
                     <BottomBarContainer>
                         <NavigationCategory>
                             <ul>
+                            {
+                                bottomLinks.map((item, key) => 
                                 <li>
-                                    <NavLink to="/desktop" activeClassName="active">Smart Phone</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/desktop" activeClassName="active">Desktop</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/desktop" activeClassName="active">Laptop</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/desktop" activeClassName="active">Accessories</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/desktop" activeClassName="active">Networking</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/desktop" activeClassName="active">Software</NavLink>
-                                </li>
+                                    <NavLink to={item.link} activeClassName="active">{item.title}</NavLink>
+                                </li>)
+                            } 
                             </ul> 
                         </NavigationCategory> 
                         <SearchForm onSubmit={ e => e.preventDefault() }>
