@@ -1,5 +1,6 @@
 import React from "react"; 
 
+import SliderBanner from './../../components/sliderBanner/sliderBanner'
 import ProductItem from './../../components/productItem/productItem';
 import { Container } from './../../components/container';
 
@@ -7,7 +8,7 @@ import { FactsWrapper, FactsContainer, Fact } from './factsBlock';
 import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './stockBlock';
 import { SubscribeRow, SubscribeForm } from './subscribeBlock';
 
-import { BannerSlider, ProductsBlock } from './style';
+import { SliderBannerBlock, ProductsBlock } from './style';
  
 import { firestoreProducts } from './../../firebase/firebase';
 
@@ -39,9 +40,10 @@ export default class HomePage extends React.Component {
     render() {  
         return ( 
             <>
-                <BannerSlider>
-                    Тут будет слайдер
-                </BannerSlider>
+                <SliderBannerBlock>
+                    <img src="static/jpg/SliderBannerBackground.jpg" alt="Banner Background" />
+                    <SliderBanner /> 
+                </SliderBannerBlock>
  
                 <FactsWrapper>
                     <FactsContainer>
