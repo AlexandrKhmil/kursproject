@@ -1,14 +1,14 @@
 import React from "react"; 
 
 import SliderBanner from './../../components/sliderBanner/sliderBanner'
-import ProductItem from './../../components/productItem/productItem';
-import { Container } from './../../components/container';
+import ProductBlockSlider from './../../components/productBlockSlider/productBlockSlider' 
+import { Container } from './../../components/container'; 
 
 import { FactsWrapper, FactsContainer, Fact } from './factsBlock'; 
 import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './stockBlock';
 import { SubscribeRow, SubscribeForm } from './subscribeBlock';
 
-import { SliderBannerBlock, ProductsBlock } from './style';
+import { SliderBannerBlock } from './style';
  
 import { firestoreProducts } from './../../firebase/firebase';
 
@@ -24,17 +24,31 @@ export default class HomePage extends React.Component {
         super(props);
         this.state = { 
             products : [
-                //{ title  : 'Smart Phone  Primo V1', imgSrc : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+                { name  : 'СЛайд2', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            ],
+            products1 : [
+                { name  : 'Слайд1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            ],
+            products2 : [
+                { name  : 'Слайд3', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
+                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
             ]
         }
     } 
 
     async componentDidMount() { 
+        /*
         let loadedProducts = await firestoreProducts; 
         let products = loadedProducts.map(item => 
             new Object({ id : item.id, name : item.name, price : item.price, img : item.img })
         );
         this.setState({ products : products }); 
+        */
     }
 
     render() {  
@@ -59,16 +73,7 @@ export default class HomePage extends React.Component {
                     </FactsContainer> 
                 </FactsWrapper>
 
-                <ProductsBlock> 
-                    {
-                        this.state.products.map((item, key) => 
-                            <ProductItem key={key}
-                                         name={item.name} 
-                                         price={item.price}  
-                                         img={item.img} />
-                        )
-                    }  
-                </ProductsBlock>
+                <ProductBlockSlider newItem={this.state.products1} topSeller={this.state.products} topRating={this.state.products2} /> 
 
                 <Container>
                     <StockBannerRow>

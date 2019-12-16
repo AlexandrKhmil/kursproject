@@ -16,6 +16,9 @@ export const color = {
     gray : '#d9d9d9', 
     lightGray : '#efefef',
     lighterGray : '#e0e0e0',
+    borderGray: '#c5c5c5',
+
+    priceColor: '#696969',
 
     ultraGreen : '#658c19',
     darkGreen : '#709b1d',

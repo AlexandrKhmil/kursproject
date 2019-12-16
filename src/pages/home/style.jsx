@@ -20,16 +20,4 @@ export const SliderBannerBlock = styled.div`
         height: 100%;
         object-fit: cover;
     }
-`; 
-
-// Third Block
-
-export const ProductsBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-`; 
- 
-// Fifth Block
-
-
- 
+`;  

@@ -2,9 +2,7 @@ import React from "react";
 
 import { NavLink } from 'react-router-dom'; 
 import { SlideWrapper, SlideHandler, Slide, SlideContainer, Arrows, NavButtons } from './style';
-
-
-
+ 
 export default class SliderBanner extends React.Component {  
     constructor(props) {
         super(props);

@@ -16,8 +16,8 @@ export const DiscountPriceBlock = styled.div`
     top: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 31px;
+    justify-content: center;
+    align-items: center; 
     width: 152px;
     height: 152px;
     background: ${color.darkGreen};
