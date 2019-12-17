@@ -21,7 +21,8 @@ export const Product = styled.div`
     img {
         width: 295px;
         height: 310px;
-        object-fit: cover;
+        object-fit: contain;
+        background: ${color.white};
     }
 
     a {
@@ -82,7 +83,7 @@ export const ProductSmall = styled(Product)`
     height: 350px;
 
     img {
-        width: 220px;
+        width: 215px;
         height: 232px;
     }
 `;

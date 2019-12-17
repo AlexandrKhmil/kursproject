@@ -6,7 +6,7 @@ import FactsBlock from './../../components/factsBlock/factsBlock';
 import { Container } from './../../components/container';  
 
 import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './stockBlock';
-import { SubscribeRow, SubscribeForm } from './subscribeBlock';
+import { SubscribeRow, SubscribeForm } from './subscribeBlock'; 
 
 import { SliderBannerBlock } from './style';
  

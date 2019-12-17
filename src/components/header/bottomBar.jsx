@@ -84,6 +84,7 @@ export const SearchForm = styled.form`
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0;
         width: 29px;
         height: 29px;
         background: ${color.darkGreen};

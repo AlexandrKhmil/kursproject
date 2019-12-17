@@ -5,7 +5,7 @@ export const AsideBlock = styled.div`
     display: flex;
     flex-direction: column; 
     margin-left: 21px;
-    width: 220px; 
+    min-width: 220px; 
 `;
 
 export const AsideItem = styled.div`

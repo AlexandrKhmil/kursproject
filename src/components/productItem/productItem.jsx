@@ -12,7 +12,7 @@ export default class ProductItem extends React.Component {
             <>
                 <Product>
                     <img src={this.props.img} alt="Product Image" />
-                    <NavLink to="/">{this.props.name}</NavLink>
+                    <NavLink to={`/product/${this.props.id}`}>{this.props.name}</NavLink>
                     <PriceBlock className="priceBlock">
                         <span>{this.props.price}</span>
                     </PriceBlock> 

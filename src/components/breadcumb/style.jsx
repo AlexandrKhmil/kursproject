@@ -15,7 +15,7 @@ export const Breadcrumb = styled.ul`
     display: flex;
     margin-left: 12px;
 
-    li, button {
+    li, button, a {
         color: ${color.white};
         font-size: 14px;
         font-weight: 700;
@@ -39,7 +39,7 @@ export const Breadcrumb = styled.ul`
         }
     }
 
-    button {
+    button, a {
         padding: 0;
         background: none;
         border: none;

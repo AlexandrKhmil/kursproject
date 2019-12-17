@@ -3,41 +3,51 @@ import React from "react";
 import { ProductList } from './../../components/list';
 import ProductItemSmall from '../../components/productItem/productItemSmall';
 import FactsBlock from './../../components/factsBlock/factsBlock';
+import Breadcumb from './../../components/breadcumb/breadcumb';
 
-import { BreadcrumbBlock, Breadcrumb } from './breadcrumb';
 import { AsideBlock, AsideItem, AsideList } from './aside';
 import { CatalogContainer, MainBlock } from './style';
 
-export default class CatalogPage extends React.Component {    
+import { firestoreProducts } from './../../firebase/firebase'; 
+
+const breadcumbItems = [ 
+    { title : 'Catalog', link : '/catalog' },
+    { title : 'All' }, 
+];
+
+export default class CatalogPage extends React.Component {  
+    constructor(props) {
+        super(props);
+        this.state = { 
+            products : [], 
+        }
+    }
+
+    async componentDidMount() {  
+        let loadedProducts = await firestoreProducts; 
+        let products = loadedProducts.map(item => 
+            new Object({ id : item.id, name : item.name, price : item.price, img : item.img })
+        );
+        this.setState({ products : products });  
+    }
+
     render() {  
         return ( 
             <>  
                 <CatalogContainer>
-                    <BreadcrumbBlock>
-                        <Breadcrumb>
-                            <li><button>Catalog</button></li>
-                            <li>All</li>
-                        </Breadcrumb>
-                    </BreadcrumbBlock> 
+                    <Breadcumb items={breadcumbItems} />
 
                     <MainBlock>
                         <ProductList>
-                            <ProductItemSmall 
-                                            name="name" 
-                                            price="price"  
-                                            img="static/jpg/Rectangle_5_copy.jpg" />
-                            <ProductItemSmall 
-                                            name="name" 
-                                            price="price"  
-                                            img="static/jpg/Rectangle_5_copy.jpg" />
-                            <ProductItemSmall 
-                                            name="name" 
-                                            price="price"  
-                                            img="static/jpg/Rectangle_5_copy.jpg" />
-                            <ProductItemSmall 
-                                            name="name" 
-                                            price="price"  
-                                            img="static/jpg/Rectangle_5_copy.jpg" />
+                        {
+                            this.state.products.map((item, key) =>
+                            <ProductItemSmall key   = { key }
+                                              id    = { item.id }
+                                              name  = { item.name } 
+                                              price = { `$${item.price}` }  
+                                              img   = { item.img } 
+                            />)
+                        }
                         </ProductList>
 
                         <AsideBlock>
@@ -57,3 +67,11 @@ export default class CatalogPage extends React.Component {
         );
     }
 } 
+
+/* 
+
+<ProductItemSmall 
+    name="name" 
+    price="price"  
+    img="static/jpg/Rectangle_5_copy.jpg" /> 
+*/

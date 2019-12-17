@@ -62,7 +62,7 @@ export default class Header extends React.Component {
                         <ModalBlock> 
                             <AuthForm onSubmit={ (e) => e.preventDefault() }> 
                                 <h3>Authorization</h3>
-                                <Close onClick={ () => { this.closeModal('authModal') } }><img src="static/svg/close.svg" alt="close" /></Close>
+                                <Close onClick={ () => { this.closeModal('authModal') } }><img src="../static/svg/close.svg" alt="close" /></Close>
                                 <AuthFormInner>
                                     <h4>Email</h4>
                                     <input type="email" />
@@ -82,7 +82,7 @@ export default class Header extends React.Component {
                         <ModalBlock> 
                             <AuthForm onSubmit={ (e) => e.preventDefault() }> 
                                 <h3>Registration</h3>
-                                <Close onClick={ () => { this.closeModal('regModal') } }><img src="static/svg/close.svg" alt="close" /></Close>
+                                <Close onClick={ () => { this.closeModal('regModal') } }><img src="../static/svg/close.svg" alt="close" /></Close>
                                 <AuthFormInner>
                                     <h4>Email</h4>
                                     <input type="email" />
@@ -124,7 +124,7 @@ export default class Header extends React.Component {
                                 <GreenTextButton onClick={ () => { this.openModal('authModal') } }>Log In</GreenTextButton> or <GreenTextButton onClick={ () => { this.openModal('regModal') } }>Create Account</GreenTextButton> 
                             </AccountStatusBlock> 
                             <BasketButton>
-                                <img src="static/svg/basket.svg" alt="Basket Image" />
+                                <img src="../static/svg/basket.svg" alt="Basket Image" />
                             </BasketButton>
                         </MiddleBarRight>
                     </MiddleBarInner>
@@ -135,8 +135,8 @@ export default class Header extends React.Component {
                         <NavigationCategory>
                             <ul>
                             {
-                                bottomLinks.map((item, key) => 
-                                <li>
+                                bottomLinks.map((item, index) => 
+                                <li key={index}>
                                     <NavLink to={item.link} activeClassName="active">{item.title}</NavLink>
                                 </li>)
                             } 
@@ -144,7 +144,7 @@ export default class Header extends React.Component {
                         </NavigationCategory> 
                         <SearchForm onSubmit={ e => e.preventDefault() }>
                             <input type="text" placeholder="Search Your Item........" /> 
-                            <button type="submit"><img src="static/svg/search.svg" alt="Search Icon" /></button>
+                            <button type="submit"><img src="../static/svg/search.svg" alt="Search Icon" /></button>
                         </SearchForm>
                     </BottomBarContainer>
                 </BottomBar>

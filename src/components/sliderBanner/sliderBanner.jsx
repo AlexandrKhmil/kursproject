@@ -43,21 +43,21 @@ export default class SliderBanner extends React.Component {
                             <SlideContainer>
                                 <img src="static/png/SliderProductImage.png" alt="Slider" />
                                 <h3>Android</h3>
-                                <NavLink to="/">Born  for  Shooting</NavLink>
+                                <NavLink to="/product/1">Born  for  Shooting</NavLink>
                             </SlideContainer> 
                         </Slide>  
                         <Slide>
                             <SlideContainer>
                                 <img src="static/png/SliderProductImage.png" alt="Slider" />
                                 <h3>Android2</h3>
-                                <NavLink to="/">Чтото там</NavLink>
+                                <NavLink to="/product/1">Чтото там</NavLink>
                             </SlideContainer> 
                         </Slide>  
                         <Slide>
                             <SlideContainer>
                                 <img src="static/png/SliderProductImage.png" alt="Slider" />
                                 <h3>Android3</h3>
-                                <NavLink to="/">Еще чтото</NavLink>
+                                <NavLink to="/product/1">Еще чтото</NavLink>
                             </SlideContainer> 
                         </Slide>  
                     </SlideHandler> 
