@@ -1,23 +1,16 @@
 import React from "react"; 
 
-import SliderBanner from './../../components/sliderBanner/sliderBanner'
-import ProductBlockSlider from './../../components/productBlockSlider/productBlockSlider' 
-import { Container } from './../../components/container'; 
+import SliderBanner from './../../components/sliderBanner/sliderBanner';
+import ProductBlockSlider from './../../components/productBlockSlider/productBlockSlider';
+import FactsBlock from './../../components/factsBlock/factsBlock';
+import { Container } from './../../components/container';  
 
-import { FactsWrapper, FactsContainer, Fact } from './factsBlock'; 
 import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './stockBlock';
 import { SubscribeRow, SubscribeForm } from './subscribeBlock';
 
 import { SliderBannerBlock } from './style';
  
-import { firestoreProducts } from './../../firebase/firebase';
-
-const factsList = [
-    { title : 'First Shipping',  subtitle : 'Get you every whare', svg : "static/svg/fact_1.svg" },
-    { title : 'Secure Store',    subtitle : '100% Secure Store',   svg : "static/svg/fact_2.svg" },
-    { title : 'Save Time',       subtitle : 'Save Your Time',      svg : "static/svg/fact_3.svg" },
-    { title : 'Pay on Delivery', subtitle : 'Get you every whare', svg : "static/svg/fact_4.svg" },
-]; 
+import { firestoreProducts } from './../../firebase/firebase'; 
 
 export default class HomePage extends React.Component {  
     constructor(props) {
@@ -58,20 +51,8 @@ export default class HomePage extends React.Component {
                     <img src="static/jpg/SliderBannerBackground.jpg" alt="Banner Background" />
                     <SliderBanner /> 
                 </SliderBannerBlock>
- 
-                <FactsWrapper>
-                    <FactsContainer>
-                    {
-                        factsList.map((item, key) => 
-                            <Fact key={key}>
-                                <img src={item.svg} alt="Fact About Our Company" />
-                                <h4>{item.title}</h4>
-                                <h5>{item.subtitle}</h5>
-                            </Fact>
-                        )
-                    }
-                    </FactsContainer> 
-                </FactsWrapper>
+
+                <FactsBlock /> 
 
                 <ProductBlockSlider newItem={this.state.products1} topSeller={this.state.products} topRating={this.state.products2} /> 
 

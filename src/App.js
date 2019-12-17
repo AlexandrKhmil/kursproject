@@ -5,22 +5,18 @@ import {GlobalStyle} from './components/global';
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import HomePage from './pages/home/home'; 
-import AccountPage from './pages/account/account'; 
-import CartPage from './pages/cart/cart'; 
-import CheckoutPage from './pages/checkout/checkout'; 
+
+import HomePage from './pages/home/home';  
+import CatalogPage from './pages/catalog/catalog';
 
 function App() {
 	return (
 		<Router> 
 			<GlobalStyle />
 			
-			<Header /> 
-
-			<Route path="/account" component={AccountPage} />
-			<Route path="/cart" component={CartPage} />
-			<Route path="/checkout" component={CheckoutPage} />
+			<Header />  
 			<Route exact path="/" component={HomePage} />  
+			<Route path="/catalog" component={CatalogPage} />
 			
             <Footer />
 		</Router>

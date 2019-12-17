@@ -76,3 +76,13 @@ export const PriceBlock = styled.div`
         transition: color ${time.sm} ease-out;
     } 
 `;
+
+export const ProductSmall = styled(Product)`
+    margin-bottom: 25px !important;
+    height: 350px;
+
+    img {
+        width: 220px;
+        height: 232px;
+    }
+`;
