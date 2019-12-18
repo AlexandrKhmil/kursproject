@@ -45,8 +45,10 @@ export default class HomePage extends React.Component {
     }
 
     render() {  
+        const { products, isReady } = this.props;
+
         return ( 
-            <>
+            <> 
                 <SliderBannerBlock>
                     <img src="static/jpg/SliderBannerBackground.jpg" alt="Banner Background" />
                     <SliderBanner /> 

@@ -17,21 +17,11 @@ const breadcumbItems = [
 
 export default class CatalogPage extends React.Component {  
     constructor(props) {
-        super(props);
-        this.state = { 
-            products : [], 
-        }
-    } 
-
-    async componentDidMount() {  
-        let loadedProducts = await firestoreProducts; 
-        let products = loadedProducts.map(item => 
-            new Object({ id : item.id, name : item.name, price : item.price, img : item.img })
-        );
-        this.setState({ products : products });  
+        super(props); 
     }
 
     render() {  
+        const { products, isReady } = this.props;
         return ( 
             <>  
                 <CatalogContainer>
@@ -40,7 +30,9 @@ export default class CatalogPage extends React.Component {
                     <MainBlock>
                         <ProductList>
                         {
-                            this.state.products.map((item, key) =>
+                            !isReady 
+                            ? <p>Загрузка...</p>
+                            : products.map((item, key) => 
                             <ProductItemSmall key   = { key }
                                               id    = { item.id }
                                               name  = { item.name } 
@@ -67,11 +59,4 @@ export default class CatalogPage extends React.Component {
         );
     }
 } 
-
-/* 
-
-<ProductItemSmall 
-    name="name" 
-    price="price"  
-    img="static/jpg/Rectangle_5_copy.jpg" /> 
-*/
+ 

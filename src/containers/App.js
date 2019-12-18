@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as booksActions from '../actions/books';
+import * as productsActions from '../actions/products';
 import App from '../App'; 
 
 /*
@@ -28,14 +28,14 @@ const searchBooks = (books, filterBy, searchQuery) => {
   return sortBy(filterBooks(books, searchQuery), filterBy);
 };
 */
-const mapStateToProps = ({ books, filter }) => ({
-  books: books.items,
+const mapStateToProps = ({ products, filter }) => ({
+  products: products.items,
   //&& searchBooks(books.items, filter.filterBy, filter.searchQuery),
-  isReady: books.isReady,
+  isReady: products.isReady,
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(booksActions, dispatch),
+  ...bindActionCreators(productsActions, dispatch),
 });
 
 export default connect(

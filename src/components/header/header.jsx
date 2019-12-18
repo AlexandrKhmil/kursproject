@@ -34,10 +34,12 @@ export default class Header extends React.Component {
         super(props);
         this.state = {
             authModal : false,
-            regModal : false
+            regModal : false,
+            cartModal : false
         } 
         this.authWrapRef = React.createRef();
         this.regWrapRef = React.createRef();
+        this.cartWrapRef = React.createRef();
     }
 
     openModal(modal) {
@@ -96,6 +98,19 @@ export default class Header extends React.Component {
                     : null
                 }   
 
+                {
+                    (this.state.cartModal) ? 
+                    <ModalWrapper ref={this.cartWrapRef} onClick={ (e) => { if (this.cartWrapRef.current === e.target) this.closeModal('cartModal') } }>
+                        <ModalBlock> 
+                            <AuthForm onSubmit={ (e) => e.preventDefault() }> 
+                                <h3>Cart</h3>
+                                <Close onClick={ () => { this.closeModal('cartModal') } }><img src="../static/svg/close.svg" alt="close" /></Close> 
+                            </AuthForm>   
+                        </ModalBlock>
+                    </ModalWrapper>
+                    : null
+                }
+
                 </PortalToRoot>
 
                 <TopBar>
@@ -121,9 +136,9 @@ export default class Header extends React.Component {
                         </Logo> 
                         <MiddleBarRight> 
                             <AccountStatusBlock>
-                                <GreenTextButton onClick={ () => { this.openModal('authModal') } }>Log In</GreenTextButton> or <GreenTextButton onClick={ () => { this.openModal('regModal') } }>Create Account</GreenTextButton> 
+                                <GreenTextButton onClick={ () => this.openModal('authModal') }>Log In</GreenTextButton> or <GreenTextButton onClick={ () => { this.openModal('regModal') } }>Create Account</GreenTextButton> 
                             </AccountStatusBlock> 
-                            <BasketButton>
+                            <BasketButton onClick={ () => this.openModal('cartModal') }>
                                 <img src="../static/svg/basket.svg" alt="Basket Image" />
                             </BasketButton>
                         </MiddleBarRight>

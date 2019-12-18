@@ -5,33 +5,28 @@ import { GlobalStyle } from './components/global';
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-
-import HomePage from './pages/home/home';  
-import CatalogPage from './pages/catalog/catalog'; 
+ 
+import Home from './containers/Home'
+import Catalog from './containers/Catalog'  
 import ProductPage from './pages/product/product'; 
 
+import { firestoreProducts } from './firebase/firebase'; 
+
 export default class App extends React.Component {
-	componentWillMount() {
-		const { setBooks } = this.props;
-		setBooks([{q : 1, w : 2}]); 
+	async componentWillMount() {
+		// Loading of products list in the Redux Store
+		const { setProducts } = this.props; 
+		const loadedProducts = await firestoreProducts; 
+		setProducts(loadedProducts);   
 	} 
 
-	render() {
-		const { books, isReady } = this.props;
+	render() { 
 		return (
-			<Router> 
-				{ !isReady
-					? 'ЗАГРУЗКА'
-					:  books.map((item) => console.log(item))
-
-				}
-
-				<GlobalStyle /> 
-
-
+			<Router>  
+				<GlobalStyle />  
 				<Header />  
-				<Route exact path="/" component={ HomePage } />  
-				<Route path="/catalog" component={ CatalogPage } /> 
+				<Route exact path="/" component={ Home } />  
+				<Route path="/catalog" component={ Catalog } /> 
 				<Route path="/product/:productID" component={ ProductPage } /> 
 				<Footer />
 			</Router>
