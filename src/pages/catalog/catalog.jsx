@@ -7,7 +7,7 @@ import Breadcumb from './../../components/breadcumb/breadcumb';
 
 import { AsideBlock, AsideItem, AsideList } from './aside';
 import { CatalogContainer, MainBlock } from './style';
-
+  
 import { firestoreProducts } from './../../firebase/firebase'; 
 
 const breadcumbItems = [ 
@@ -21,7 +21,7 @@ export default class CatalogPage extends React.Component {
         this.state = { 
             products : [], 
         }
-    }
+    } 
 
     async componentDidMount() {  
         let loadedProducts = await firestoreProducts; 

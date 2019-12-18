@@ -32,7 +32,7 @@ export const RightBlock = styled.div`
         padding-bottom: 14px;
         width: 100%;
         border-bottom: 1px solid ${color.gray};
-        color: ${color.blackText}
+        color: ${color.blackText};
         font-size: 22px;
         font-weight: 600;
         letter-spacing: 0.88px;
