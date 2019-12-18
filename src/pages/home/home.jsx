@@ -16,33 +16,23 @@ export default class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            products : [
-                { name  : 'СЛайд2', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            topSeller : [
+                { id : 1, name  : 'СЛайд2', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' },
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }, 
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }
             ],
-            products1 : [
-                { name  : 'Слайд1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            newItem : [
+                { id : 1, name  : 'Слайд1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' },
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }, 
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }
             ],
-            products2 : [
-                { name  : 'Слайд3', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' },
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }, 
-                { name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '$8000' }
+            topRating : [
+                { id : 1, name  : 'Слайд3', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' },
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }, 
+                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }
             ]
         }
     } 
-
-    async componentDidMount() { 
-        /*
-        let loadedProducts = await firestoreProducts; 
-        let products = loadedProducts.map(item => 
-            new Object({ id : item.id, name : item.name, price : item.price, img : item.img })
-        );
-        this.setState({ products : products }); 
-        */
-    }
 
     render() {  
         const { products, isReady } = this.props;
@@ -56,13 +46,13 @@ export default class HomePage extends React.Component {
 
                 <FactsBlock /> 
 
-                <ProductBlockSlider newItem={this.state.products1} topSeller={this.state.products} topRating={this.state.products2} /> 
+                <ProductBlockSlider newItem={this.state.newItem} topSeller={this.state.topSeller} topRating={this.state.topRating} /> 
 
                 <Container>
                     <StockBannerRow>
                         <DiscountPriceBlock> 
-                            <OldPrice>$2300</OldPrice>
-                            <NewPrice>$1150</NewPrice>
+                            <OldPrice>2300 грн</OldPrice>
+                            <NewPrice>1150 грн</NewPrice>
                         </DiscountPriceBlock> 
                         <img src="static/jpg/StockBlock.jpg" alt="Stock Block Product Image" />
                         <StockBannerInner>

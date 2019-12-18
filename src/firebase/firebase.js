@@ -51,5 +51,19 @@ const loadUrlForProducts = async () => {
 }
 
 export let firestoreProducts = loadUrlForProducts();
+
+// Write Functions
+
+export const placeOrder = (data) => {
+    db.collection("orders").doc().set(data)
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}
+
+
  
 export default firebase;

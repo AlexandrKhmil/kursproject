@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 
 import { GlobalStyle } from './components/global';
 
-import Header from './components/header/header';
+import Header from './containers/Header';
 import Footer from './components/footer/footer';
  
-import Home from './containers/Home'
-import Catalog from './containers/Catalog'  
-import ProductPage from './pages/product/product'; 
+import Home from './containers/Home';
+import Catalog from './containers/Catalog'; 
+import Product from './containers/Product';
+import Checkout from './containers/Checkout';
 
 import { firestoreProducts } from './firebase/firebase'; 
 
@@ -27,7 +28,8 @@ export default class App extends React.Component {
 				<Header />  
 				<Route exact path="/" component={ Home } />  
 				<Route path="/catalog" component={ Catalog } /> 
-				<Route path="/product/:productID" component={ ProductPage } /> 
+				<Route path="/product/:productID" component={ Product } /> 
+				<Route path="/checkout" component={ Checkout } /> 
 				<Footer />
 			</Router>
 		)

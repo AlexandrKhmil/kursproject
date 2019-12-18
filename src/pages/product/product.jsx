@@ -10,70 +10,47 @@ import { firestoreProducts } from './../../firebase/firebase';
 
 const listOfKeyExceptions = ['id', 'name', 'category', 'img', 'description', 'price'];
 
-export default class ProductPage extends React.Component {
-    constructor(props) {
-        super(props); 
-        this.state = {
-            product : { }, 
-            breadcumbItems : [ 
-                { title : 'Catalog', link : '/catalog' },
-                { title : 'Название продукта' }, 
-            ], 
-            productNotFound : false,
-            isFetched : false
-        }
-    } 
+const breadcumbItems = [{ title : 'Catalog', link : '/catalog' }];
 
-    async componentDidMount() {  
-        let loadedProducts = await firestoreProducts; 
-        let selectedProduct = loadedProducts.find(item => item.id === this.props.match.params.productID);
-        if (selectedProduct != null) {
-            this.state.breadcumbItems.pop();
-            this.setState({ product : selectedProduct,
-                breadcumbItems : [...this.state.breadcumbItems, { title : selectedProduct.name }],
-                isFetched : true });  
-        } else {
-            this.setState({ productNotFound : true, isFetched : true });
-        }  
-    }
-
+export default class ProductPage extends React.Component { 
 
     render() {
+        const { products, isReady, addToCart } = this.props; 
         return (
             <>   
                 <ProductPageContainer>
-                    <Breadcumb items={this.state.breadcumbItems} /> 
-                    {
-                        this.state.isFetched ?
-                        !this.state.productNotFound ? 
-                        <Product>
-                            <LeftBlock>
-                                <img src={this.state.product.img} alt="Product" />
-                            </LeftBlock>
-                            <RightBlock>
-                                <h1>{this.state.product.name}</h1>
-                                <ParametersList>
-                                {
-                                    Object.entries(this.state.product).map((item, key) => 
-                                    listOfKeyExceptions.indexOf(item[0]) === -1 ?
-                                    <li key={key}><span>{item[0]}:</span> <span>{item[1]}</span></li>
-                                    : null  
-                                    )
-                                } 
-                                </ParametersList> 
-                                <p>{this.state.product.description}</p>
-                                <PriceBlock>
-                                    <span>${this.state.product.price}</span>
-                                </PriceBlock>
-                                <button>Add to cart</button>
-                            </RightBlock> 
-                        </Product> 
-                        :
-                        <h2>Данный товар не найден</h2> 
-                        :
-                        <p>Красивый прелоадер</p>
-                    } 
+                { !isReady 
+                    ? <p>Идет загрузка</p>
+                    : [products.find(item => item.id === this.props.match.params.productID)].map((product, key) =>
+                <div key={key}>
+                    <Breadcumb items={ [...breadcumbItems, { title : product.name}]} />  
+                    <Product>
+                        <LeftBlock>
+                            <img src={product.img} alt="Product" />
+                        </LeftBlock>
+                        <RightBlock>
+                            <h1>{product.name}</h1>
+                            <ParametersList>
+                            {
+                                Object.entries(product).map((item, key) => 
+                                listOfKeyExceptions.indexOf(item[0]) === -1 
+                                ? <li key={key}><span>{item[0]}:</span> <span>{item[1]}</span></li>
+                                : null  
+                                )
+                            } 
+                            </ParametersList> 
+                            <p>{product.description}</p>
+                            <PriceBlock>
+                                <span>${product.price}</span>
+                            </PriceBlock>
+                            <button onClick={ () => addToCart(product.id) }>Add to cart</button>
+                        </RightBlock> 
+                    </Product> 
+                </div>
+                    ) 
+                } 
                 </ProductPageContainer>  
+                
                 <FactsBlock />
             </>
         );

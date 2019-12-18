@@ -1,5 +1,5 @@
 import React from "react"; 
-import ProductItem from './../../components/productItem/productItem'; 
+import ProductItem from './../../containers/ProductItem'; 
 import { ProductsBlock, ProductBlockContainer, ProductListChoose, ProductListChooseItem, ProductListWrapper, ProductListHandler, ProductListSlide } from './style';
 
 export default class ProductBlockSlider extends React.Component {  
@@ -52,6 +52,7 @@ export default class ProductBlockSlider extends React.Component {
                                 {
                                     this.props.newItem.map((item, key) => 
                                         <ProductItem key={key}
+                                                    id = {item.id}
                                                     name={item.name} 
                                                     price={item.price}  
                                                     img={item.img} />
@@ -62,6 +63,7 @@ export default class ProductBlockSlider extends React.Component {
                                 {
                                     this.props.topSeller.map((item, key) => 
                                         <ProductItem key={key}
+                                        id = {item.id}
                                                     name={item.name} 
                                                     price={item.price}  
                                                     img={item.img} />
@@ -72,6 +74,7 @@ export default class ProductBlockSlider extends React.Component {
                                 {
                                     this.props.topRating.map((item, key) => 
                                         <ProductItem key={key}
+                                        id = {item.id}
                                                     name={item.name} 
                                                     price={item.price}  
                                                     img={item.img} />

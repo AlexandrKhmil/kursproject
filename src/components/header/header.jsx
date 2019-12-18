@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { Container } from './../container';
 import PortalToRoot from '../portalToRoot'; 
 
-import { ModalWrapper, ModalBlock, Close, AuthForm, AuthFormInner } from './modal';
+import { ModalWrapper, ModalBlock, Close, AuthForm, AuthFormInner, CartBlock, CartList } from './modal';
 import { TopBar, Navigation } from './topBar';
 import { MiddleBar, MiddleBarInner, Logo, MiddleBarRight, AccountStatusBlock, GreenTextButton, BasketButton } from './middleBar'; 
 import { BottomBar, BottomBarContainer, NavigationCategory, SearchForm} from './bottomBar';
 
 const topLinks = [
     { title : 'Home', link : '/' },
+    { title : 'Checkout', link : '/checkout' },
     /*
     { title : 'My Account', link : '/account' },
     { title : 'Shopping Cart', link : '/cart' },
@@ -34,11 +35,11 @@ export default class Header extends React.Component {
         super(props);
         this.state = {
             authModal : false,
-            regModal : false,
+            regModal  : false,
             cartModal : false
         } 
         this.authWrapRef = React.createRef();
-        this.regWrapRef = React.createRef();
+        this.regWrapRef  = React.createRef();
         this.cartWrapRef = React.createRef();
     }
 
@@ -52,13 +53,14 @@ export default class Header extends React.Component {
         this.setState({
             [modal] : false
         })
-    }
+    } 
 
-    render() {  
+    render() {   
+        const { items, products, removeFromCart } = this.props;
         return ( 
             <header> 
                 <PortalToRoot> 
-                {
+                { // Авторизация
                     (this.state.authModal) ? 
                     <ModalWrapper ref={this.authWrapRef} onClick={ (e) => { if (this.authWrapRef.current === e.target) this.closeModal('authModal') } }>
                         <ModalBlock> 
@@ -78,7 +80,7 @@ export default class Header extends React.Component {
                     : null
                 }  
                 
-                {
+                { // Регистрация
                     (this.state.regModal) ? 
                     <ModalWrapper ref={this.regWrapRef} onClick={ (e) => { if (this.regWrapRef.current === e.target) this.closeModal('regModal') } }>
                         <ModalBlock> 
@@ -98,17 +100,34 @@ export default class Header extends React.Component {
                     : null
                 }   
 
-                {
+                {   // Корзина
                     (this.state.cartModal) ? 
                     <ModalWrapper ref={this.cartWrapRef} onClick={ (e) => { if (this.cartWrapRef.current === e.target) this.closeModal('cartModal') } }>
-                        <ModalBlock> 
-                            <AuthForm onSubmit={ (e) => e.preventDefault() }> 
-                                <h3>Cart</h3>
-                                <Close onClick={ () => { this.closeModal('cartModal') } }><img src="../static/svg/close.svg" alt="close" /></Close> 
-                            </AuthForm>   
+                        <ModalBlock>  
+                            <CartBlock as="div">
+                                <h3>Cart</h3> 
+                                <Close onClick={ () => { this.closeModal('cartModal') } }><img src="../static/svg/close.svg" alt="close" /></Close>  
+                                <CartList> 
+                                { 
+                                    items.map((item,key) => {
+                                        let product = products.find(product => product.id == item.id);
+                                        return  ( 
+                                    <li key={key}> 
+                                        <img src={product.img} /> 
+                                        <p>Имя - {product.name}</p>
+                                        <p>Тип - {product.category}</p>
+                                        <p>Цена - {product.price}$ x {item.count} = {product.price*item.count}$</p>
+                                        <p>id - {item.id}</p> 
+                                        <button onClick={() => removeFromCart(item.id)}>Удалить</button>
+                                    </li>
+                                    )})
+                                }
+                                </CartList> 
+                                <NavLink to='/checkout' onClick={ () => { this.closeModal('cartModal') } }>Go to checkout</NavLink>
+                            </CartBlock> 
                         </ModalBlock>
                     </ModalWrapper>
-                    : null
+                    : null 
                 }
 
                 </PortalToRoot>

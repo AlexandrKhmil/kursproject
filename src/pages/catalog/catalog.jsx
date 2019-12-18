@@ -1,7 +1,9 @@
 import React from "react";  
 
 import { ProductList } from './../../components/list';
-import ProductItemSmall from '../../components/productItem/productItemSmall';
+//import ProductItemSmall from '../../components/productItem/productItemSmall';
+import ProductItemSmall from '../../containers/ProductItemSmall';
+
 import FactsBlock from './../../components/factsBlock/factsBlock';
 import Breadcumb from './../../components/breadcumb/breadcumb';
 
@@ -15,15 +17,11 @@ const breadcumbItems = [
     { title : 'All' }, 
 ];
 
-export default class CatalogPage extends React.Component {  
-    constructor(props) {
-        super(props); 
-    }
-
+export default class CatalogPage extends React.Component {   
     render() {  
         const { products, isReady } = this.props;
         return ( 
-            <>  
+            <>   
                 <CatalogContainer>
                     <Breadcumb items={breadcumbItems} />
 
@@ -36,7 +34,7 @@ export default class CatalogPage extends React.Component {
                             <ProductItemSmall key   = { key }
                                               id    = { item.id }
                                               name  = { item.name } 
-                                              price = { `$${item.price}` }  
+                                              price = { item.price }  
                                               img   = { item.img } 
                             />)
                         }
@@ -46,8 +44,15 @@ export default class CatalogPage extends React.Component {
                             <AsideItem>
                                 <h3>Category</h3>
                                 <AsideList>
-                                    <li><button>Smart Phone</button></li>
-                                    <li><button>Laptop</button></li>
+                                {
+                                    !isReady 
+                                    ? <p>Загрузка...</p>
+                                    : products.reduce((prev, product, index) => {
+                                        return (prev.indexOf(product.category) == -1) ? [ ...prev, product.category] : prev
+                                    }, []).map((item, key) => 
+                                    <li key={key}><button>{item}</button></li>
+                                    )
+                                } 
                                 </AsideList>
                             </AsideItem>
                         </AsideBlock>

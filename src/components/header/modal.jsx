@@ -111,3 +111,40 @@ export const AuthFormInner = styled.div`
         }
     }
 `;
+
+export const CartBlock = styled(AuthForm)`
+    
+    & > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto 5px 10px 5px;
+        height: 45px;
+        background: ${color.darkGreen};
+        border-bottom: 3px solid ${color.ultraGreen};
+        border-radius: 3px;
+        color: ${color.white};
+        font-size: 24px;
+        font-weight: 600; 
+        &:active {
+            height: 42px;
+            border-bottom: 0;
+        }
+    }
+`;
+
+export const CartList = styled.ul`
+    margin-top: 10px;
+    li {
+        margin-bottom: 5px;
+    }
+    
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+    h4 {}
+
+    button {}
+`;
