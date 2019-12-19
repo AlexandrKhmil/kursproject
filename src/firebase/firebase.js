@@ -55,9 +55,10 @@ export let firestoreProducts = loadUrlForProducts();
 // Write Functions
 
 export const placeOrder = (data) => {
-    db.collection("orders").doc().set(data)
-    .then(function() {
-        console.log("Document successfully written!");
+    db.collection("orders").add(data)
+    .then(function(docRef) { 
+        console.log("Document successfully written!"); 
+        return docRef.id;
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);

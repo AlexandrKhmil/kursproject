@@ -28,14 +28,14 @@ export default class CatalogPage extends React.Component {
                     <MainBlock>
                         <ProductList>
                         {
-                            !isReady 
+                            !isReady
                             ? <p>Загрузка...</p>
-                            : products.map((item, key) => 
+                            : products.map((item, key) =>
                             <ProductItemSmall key   = { key }
                                               id    = { item.id }
-                                              name  = { item.name } 
-                                              price = { item.price }  
-                                              img   = { item.img } 
+                                              name  = { item.name }
+                                              price = { item.price }
+                                              img   = { item.img }
                             />)
                         }
                         </ProductList>

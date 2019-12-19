@@ -17,14 +17,15 @@ export const SlideHandler = styled.div`
 
 export const Slide = styled.div` 
     min-width: 100vw;
-    max-width: 100vw;
+    max-width: 100vw; 
+
     h3 {
         position: absolute;
         top: 125px;
         right: 0;
         font-family: 'Dosis', sans-serif;
         color: ${color.darkGreen};
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 700;
         text-transform: uppercase;
     } 

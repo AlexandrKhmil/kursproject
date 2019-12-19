@@ -8,6 +8,8 @@ import { TopBar, Navigation } from './topBar';
 import { MiddleBar, MiddleBarInner, Logo, MiddleBarRight, AccountStatusBlock, GreenTextButton, BasketButton } from './middleBar'; 
 import { BottomBar, BottomBarContainer, NavigationCategory, SearchForm} from './bottomBar';
 
+import style from './header.module.css'
+
 const topLinks = [
     { title : 'Home', link : '/' },
     { title : 'Checkout', link : '/checkout' },
@@ -107,19 +109,26 @@ export default class Header extends React.Component {
                             <CartBlock as="div">
                                 <h3>Cart</h3> 
                                 <Close onClick={ () => { this.closeModal('cartModal') } }><img src="../static/svg/close.svg" alt="close" /></Close>  
-                                <CartList> 
-                                { 
+                                <CartList>
+                                {  (items.length === 0)
+                                    ? 'Корзина пуста' :
                                     items.map((item,key) => {
                                         let product = products.find(product => product.id == item.id);
                                         return  ( 
-                                    <li key={key}> 
-                                        <img src={product.img} /> 
-                                        <p>Имя - {product.name}</p>
-                                        <p>Тип - {product.category}</p>
-                                        <p>Цена - {product.price}$ x {item.count} = {product.price*item.count}$</p>
-                                        <p>id - {item.id}</p> 
-                                        <button onClick={() => removeFromCart(item.id)}>Удалить</button>
-                                    </li>
+                                    <div className={style.basketСontainer} key={key}>
+                                        <img src={product.img} />
+                                        <div className={style.basketInfo}>
+                                            <div className={style.infoName}>{product.name}</div>
+                                            <div className={style.infoType}>Type : <span>{product.category}</span></div>
+                                            <div className={style.infoCount}>Quantity : <span>{item.count}</span></div>
+                                        </div>
+                                        <div className={style.basketCost}>
+                                            {/*- {product.price}грн x {item.count} =*/}
+                                             <span>₴ {product.price*item.count}</span>
+                                            <button onClick={() => removeFromCart(item.id)}>+</button>
+                                        </div>
+                                        {/*<div>id - {item.id}</div>*/} 
+                                    </div>
                                     )})
                                 }
                                 </CartList> 

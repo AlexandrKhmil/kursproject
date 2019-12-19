@@ -1,0 +1,65 @@
+.basketСontainer {
+    border-bottom: 1px solid gray;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    height: 160px;
+    display: flex;
+
+}
+.basketСontainer img{
+    width: 30%;
+    padding: 15px;
+}
+.basketСontainer .basketInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.infoName{
+    font-size: 22px;
+    font-weight: 600;
+    color: #666666;
+    margin-bottom: 15px;
+}
+.infoType{
+    font-size: 14px;
+    color: #898989;
+    font-weight: 600;
+}
+.infoType span{
+    font-size: 16px;
+    color: #709b1d;
+    font-weight: 600;
+}
+.infoCount{
+    font-size: 14px;
+    color: #898989;
+    font-weight: 600;
+}
+.infoCount span{
+    font-size: 16px;
+    color: #709b1d;
+    font-weight: 600;
+}
+.basketСontainer .basketCost{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.basketСontainer .basketCost span{
+    color: #709b1d;
+    font-size: 20px;
+}
+.basketСontainer .basketCost button{
+    background-color: #709b1d;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    transform: rotateZ(45deg);
+    outline: none;
+    border: none;
+}

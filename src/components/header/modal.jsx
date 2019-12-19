@@ -118,7 +118,7 @@ export const CartBlock = styled(AuthForm)`
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: auto 5px 10px 5px;
+        margin: 10px 5px 10px 5px;
         height: 45px;
         background: ${color.darkGreen};
         border-bottom: 3px solid ${color.ultraGreen};
@@ -134,17 +134,7 @@ export const CartBlock = styled(AuthForm)`
 `;
 
 export const CartList = styled.ul`
-    margin-top: 10px;
-    li {
-        margin-bottom: 5px;
-    }
-    
-    img {
-        width: 50px;
-        height: 50px;
-    }
-
-    h4 {}
-
-    button {}
+    padding: 10px;
+    height: 500px;
+    overflow-y: auto;
 `;

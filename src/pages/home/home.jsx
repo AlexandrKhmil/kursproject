@@ -27,9 +27,9 @@ export default class HomePage extends React.Component {
                 { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }
             ],
             topRating : [
-                { id : 1, name  : 'Слайд3', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' },
-                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }, 
-                { id : 1, name  : 'Smart Phone  Primo V1', img : 'static/jpg/Rectangle_5_copy.jpg', price : '8000' }
+                { id : 1, name  : 'loading', img : 'static/png/SliderProductImage.png', price : '8000' },
+                { id : 1, name  : 'loading', img : 'static/png/SliderProductImage.png', price : '8000' }, 
+                { id : 1, name  : 'loading', img : 'static/png/SliderProductImage.png', price : '8000' }
             ]
         }
     } 
@@ -41,12 +41,15 @@ export default class HomePage extends React.Component {
             <> 
                 <SliderBannerBlock>
                     <img src="static/jpg/SliderBannerBackground.jpg" alt="Banner Background" />
-                    <SliderBanner /> 
+                    <SliderBanner products={isReady ? products.filter((item, index) => index > 8 && index < 12)
+                        .map(item => { let i = item; i.img='static/png/SliderProductImage.png'; return i }) : this.state.topRating} /> 
                 </SliderBannerBlock>
 
-                <FactsBlock /> 
+                <FactsBlock />  
 
-                <ProductBlockSlider newItem={this.state.newItem} topSeller={this.state.topSeller} topRating={this.state.topRating} /> 
+                <ProductBlockSlider newItem={isReady ? products.filter((item, index) => index < 3) : this.state.topSeller} 
+                                    topSeller={isReady ? products.filter((item, index) => index > 2 & index < 6) : this.state.topSeller}
+                                    topRating={isReady ? products.filter((item, index) => index > 5 & index < 9) : this.state.topSeller} />  
 
                 <Container>
                     <StockBannerRow>

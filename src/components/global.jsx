@@ -41,7 +41,16 @@ export const time = {
 export const GlobalStyle = createGlobalStyle`
     body {
         margin: 0; 
+        min-height: 100vh;
         font-family: 'Open Sans', sans-serif;
+        &>div {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            footer {
+                margin-top: auto;
+            }
+        }
     } 
     *, *::after, *::before {
         box-sizing: border-box;

@@ -39,27 +39,16 @@ export default class SliderBanner extends React.Component {
             <>
                 <SlideWrapper>
                     <SlideHandler style={{ transform: `translateX(calc(-${this.state.activeSlide * 100 / this.state.slidesCount}% + 100vw))` }}>
-                        <Slide>
+                    {
+                        this.props.products.map((item, key) => 
+                        <Slide key={key}>
                             <SlideContainer>
-                                <img src="static/png/SliderProductImage.png" alt="Slider" />
-                                <h3>Android</h3>
-                                <NavLink to="/product/1">Born  for  Shooting</NavLink>
+                                <img src={item.img} alt="Slider" />
+                                <h3>{item.name}</h3>
+                                <NavLink to={`/product/${item.id}`}>Go to Page</NavLink>
                             </SlideContainer> 
-                        </Slide>  
-                        <Slide>
-                            <SlideContainer>
-                                <img src="static/png/SliderProductImage.png" alt="Slider" />
-                                <h3>Android2</h3>
-                                <NavLink to="/product/1">Чтото там</NavLink>
-                            </SlideContainer> 
-                        </Slide>  
-                        <Slide>
-                            <SlideContainer>
-                                <img src="static/png/SliderProductImage.png" alt="Slider" />
-                                <h3>Android3</h3>
-                                <NavLink to="/product/1">Еще чтото</NavLink>
-                            </SlideContainer> 
-                        </Slide>  
+                        </Slide>  )
+                    } 
                     </SlideHandler> 
                 </SlideWrapper> 
                 <Arrows>
@@ -79,3 +68,27 @@ export default class SliderBanner extends React.Component {
         );
     }
 } 
+
+/* 
+    <Slide>
+        <SlideContainer>
+            <img src="static/png/SliderProductImage.png" alt="Slider" />
+            <h3>Android</h3>
+            <NavLink to="/product/1">Born  for  Shooting</NavLink>
+        </SlideContainer> 
+    </Slide>  
+    <Slide>
+        <SlideContainer>
+            <img src="static/png/SliderProductImage.png" alt="Slider" />
+            <h3>Android2</h3>
+            <NavLink to="/product/1">Чтото там</NavLink>
+        </SlideContainer> 
+    </Slide>  
+    <Slide>
+        <SlideContainer>
+            <img src="static/png/SliderProductImage.png" alt="Slider" />
+            <h3>Android3</h3>
+            <NavLink to="/product/1">Еще чтото</NavLink>
+        </SlideContainer> 
+    </Slide>  
+*/
