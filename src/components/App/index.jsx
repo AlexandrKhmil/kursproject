@@ -21,7 +21,7 @@ let App = () =>
     <GlobalStyle />
     <Header />
     <Route exact path="/" component={Home} />
-    <Route path="/Catalog" component={Catalog} />
+    <Route path="/catalog" component={Catalog} />
     <Footer />
   </BrowserRouter>
 

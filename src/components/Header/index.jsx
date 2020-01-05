@@ -13,8 +13,8 @@ const pagesLinks = [
 ] 
 
 const catalogLinks = [
-  { title: 'All', link: '/Catalog', event: ''},
-  { title: 'Phones', link: '/Catalog2', event: ''}
+  { title: 'All', link: '/catalog', event: ''},
+  { title: 'Phones', link: '/catalog2', event: ''}
 ]
 
 const Header = () => 
