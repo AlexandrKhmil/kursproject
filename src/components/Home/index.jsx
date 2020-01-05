@@ -1,8 +1,8 @@
 import React from 'react'
 
-let Home = () => 
-  <div>
+const Home = () => 
+  <main>
     Home
-  </div>
+  </main>
 
 export default Home

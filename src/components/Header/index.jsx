@@ -8,8 +8,7 @@ import { HeaderBottom, NavigationCatalog } from './HeaderBottom'
 import { Container } from './style' 
 
 const pagesLinks = [
-  { title: 'Home', link: '/' },
-  { title: 'Catalog', link: '/Catalog' },
+  { title: 'Home', link: '/' }, 
   { title: 'Account', link: '/Account' }
 ] 
 

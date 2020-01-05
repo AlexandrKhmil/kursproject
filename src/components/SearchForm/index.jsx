@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Form, Button } from './style'
 
-let SearchForm = props => {
+const SearchForm = props => {
   const { handleSubmit } = props 
   return (
     <Form onSubmit={handleSubmit}>
@@ -19,8 +19,6 @@ let SearchForm = props => {
   )
 }
 
-  
-
 export default reduxForm({
-  form: 'search' // a unique identifier for this form
+  form: 'search' 
 })(SearchForm)

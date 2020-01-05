@@ -2,12 +2,13 @@ import { createGlobalStyle  } from 'styled-components'
  
 export const color = { 
   white: '#ffffff',
-  gray: '#808080',
+  gray: '#e0e0e0',
   darkGray: '#d9d9d9',
   lightGray: '#f3f3f3',
   black: '#000000',
   green: '#709b1d',
-  darkGreen: '#58800b'
+  darkGreen: '#58800b',
+  lightGreen: '#83b228'
 }
 
 export const shadow = {
