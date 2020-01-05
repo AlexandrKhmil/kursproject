@@ -68,7 +68,7 @@ export const PriceBlock = styled.div`
   margin: 10px 0;
 
   span {
-    color: ${color.gray};
+    color: ${color.black};
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.8px; 

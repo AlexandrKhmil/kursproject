@@ -8,17 +8,16 @@ const ProductList = props => {
   const { items } = props
   return (
     <List>
-      { items.length !== 0 
-        ? items.map((I, K) => 
+      { Object.entries(items).map((I, K) => 
         <Item>
-          <img src={I.img} alt="Product" />
-          <NavLink to={`/product/${I.id}`}>{I.name}</NavLink>
+          <img src={I[1].imgURL} alt="Product" />
+          <NavLink to={`/product/${I[0]}`}>{I[1].name}</NavLink>
           <PriceBlock className="priceBlock">
-            <span>{I.price} грн</span>
+            <span>{I[1].price} грн</span>
           </PriceBlock> 
           <button onClick={ () => {} }>Add to cart</button>
         </Item> 
-        ) : null
+        )
       }
     </List>
   )
