@@ -1,19 +1,36 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'; 
-import { List, Item } from './style'
-
-import { PriceBlock } from '../ProductItem'
+import { PriceBlock, RatingBlock } from '../ProductItem'
+import { List, Item } from './style' 
 
 const ProductList = props => {
   const { items } = props
   return (
     <List>
-      { Object.entries(items).map((I, K) => 
-        <Item>
-          <img src={I[1].imgURL} alt="Product" />
-          <NavLink to={`/product/${I[0]}`}>{I[1].name}</NavLink>
+      { items.map((I, K) => 
+        <Item key={K}>
+          <img src={I.imgURL} alt="Product" />
+          <RatingBlock> { /* {I.rating} */}
+            <div>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <ul style={{height: `calc(100%  * ${I.rating / 100})`}}>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </RatingBlock>
+          <NavLink to={`/product/${I}`}>{I.name}</NavLink>
           <PriceBlock className="priceBlock">
-            <span>{I[1].price} грн</span>
+            <span>{I.price} грн</span>
           </PriceBlock> 
           <button onClick={ () => {} }>Add to cart</button>
         </Item> 

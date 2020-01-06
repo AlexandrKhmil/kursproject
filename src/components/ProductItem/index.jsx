@@ -1,6 +1,63 @@
 import styled from 'styled-components'
 import { color, time } from '../GlobalStyle'
 
+export const RatingBlock = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: 5px;
+  background: ${color.lightGray};  
+  border-bottom-left-radius: 7px;
+  transition: background ${time.md} ease-out;
+  
+  & > div {
+    position: relative;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+    overflow: hidden;
+    li {
+      display: flex;
+      min-width: 15px;
+      min-height: 15px;
+      border: 1px solid white;
+    }
+  }
+
+  ul:first-child {
+    li { 
+      background: ${color.gray};
+    }
+  }
+
+  ul:last-child {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    li {
+      background: ${color.green};
+    }
+  }
+`
+
+export const PriceBlock = styled.div`
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+
+  span {
+    color: ${color.black};
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.8px; 
+    transition: color ${time.sm} ease-out;
+  }
+`
 export const ProductItem = styled.div`
   position: relative;
   display: flex;
@@ -14,6 +71,9 @@ export const ProductItem = styled.div`
     background: ${color.darkGreen};
     & .priceBlock span {
       color: ${color.white};
+    }
+    ${RatingBlock} {
+      background: ${color.green};
     }
   }
 
@@ -59,19 +119,5 @@ export const ProductItem = styled.div`
       height: 39px;
       border-bottom: none;
     }
-  }
-`
-export const PriceBlock = styled.div`
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-
-  span {
-    color: ${color.black};
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.8px; 
-    transition: color ${time.sm} ease-out;
   }
 `

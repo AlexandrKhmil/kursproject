@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom' 
 import SearchForm from '../SearchForm'
- 
 import { HeaderTop, NavigationPages } from './HeaderTop'
 import { HeaderMiddle, Logo, UserPanel, LogInPanel, TextButton, BasketButton, ButtonCounter } from './HeaderMiddle'
 import { HeaderBottom, NavigationCatalog } from './HeaderBottom'

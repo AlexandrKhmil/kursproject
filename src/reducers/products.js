@@ -1,6 +1,7 @@
 const initialState = {
   isReady: false,
-  items: {}
+	items: [],
+	sortType: 'none'
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +11,12 @@ export default (state = initialState, action) => {
 			  ...state,
 			  items: action.value,
 			  isReady: true
-		  } 
+			}
+		case "SET_SORT_TYPE": 
+			return { 
+				...state,
+				sortType: action.value
+			}
 	  default: return state
   }
 }
