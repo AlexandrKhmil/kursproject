@@ -41,7 +41,7 @@ export const NavigationCatalog = styled.ul`
       transform: translateY(2px);
     }
 
-    &.current {
+    &.current.allowed {
       background: transparent;
       color: ${color.green};
       border-bottom: 0; 

@@ -12,7 +12,7 @@ const SearchForm = props => {
         type="text"
         placeholder="Search Your Item........"
       />
-      <Button>
+      <Button to="/catalog">
         <img src="../static/svg/search.svg" alt="Search Button" />
       </Button>
     </Form>

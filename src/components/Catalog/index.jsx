@@ -2,7 +2,10 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as ProductActions from '../../actions/products'
-import { sortProducts } from './sortProducts'
+import { sortProducts } from '../../functions/sortProducts'
+import { filterPriceRange } from '../../functions/filterPriceRange'
+import { filterProductByCategory } from '../../functions/filterProductByCategory'
+import { filterProductBySearch } from '../../functions/filterProductBySearch'
 import Breadcumbs from '../Breadcumbs'  
 import { Aside, AsideItem, AsideList } from '../Aside' 
 import FactsBlock from '../FactsBlock' 
@@ -12,13 +15,14 @@ const breadcumbItems = [
   { title : 'Catalog', link : '/catalog' },
   { title : 'All' }
 ]
-
-
-
+ 
 const mapStateToProps = ({products}) => ({ 
   products: products.items, 
   isReady: products.isReady,
-  sortType: products.sortType
+  sortType: products.sortType,
+  priceRange: products.priceRange,
+  productCategoriesAllowed: products.productCategoriesAllowed,
+  searchProduct: products.searchProduct
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -26,19 +30,12 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const Catalog = props => {
-  const { products, isReady, sortType, setSortType } = props
+  const { isReady, sortType, priceRange, productCategoriesAllowed, searchProduct, setSortType, setPriceRange } = props
+  let { products } = props
 
-  const AsideItems = [
+  const AsideItems = [ 
     { 
-      title: 'Price Range', 
-      items: [ 
-        // { title: '< 5 000', onClick: setSortType }, 
-        // { title: '5000 - 10 000', onClick: setSortType }, 
-        // { title: '> 10 000', onClick: setSortType }
-      ]
-    },
-    { 
-      title: 'Сортировка товара', 
+      title: 'Сортировка', 
       items: [ 
         { title: 'Цена по возрастанию', onClick: () => setSortType('price_ascending') }, 
         { title: 'Цена по убыванию', onClick: () => setSortType('price_descending') }, 
@@ -47,17 +44,28 @@ const Catalog = props => {
         { title: 'Сперва лучшие', onClick: () => setSortType('rating_descending') },
         { title: 'Сперва худшие', onClick: () => setSortType('rating_ascending') },
       ]
-    } 
+    },
+    { 
+      title: 'Цена', 
+      items: [ 
+        { title: 'до 5 000', onClick: () => setPriceRange({min: 0, max: 5000}) }, 
+        { title: '5000 - 10 000', onClick: () => setPriceRange({min: 5000, max: 10000}) }, 
+        { title: '> 10 000', onClick: () => setPriceRange({min: 10000, max: null}) }
+      ]
+    },
   ] 
 
-  sortProducts(products, sortType)
+  sortProducts(products, sortType)  
+  let productsToDisplay = filterPriceRange(products, priceRange)
+  productsToDisplay = filterProductByCategory(productsToDisplay, productCategoriesAllowed)
+  productsToDisplay = filterProductBySearch(productsToDisplay, searchProduct)
 
   return (
     <main>
       <Container>  
         <Breadcumbs items={breadcumbItems} />  
         <MainContainer>
-          <ProductList items={products} /> 
+          <ProductList items={productsToDisplay} /> 
           <Aside>
             { 
               AsideItems.map((P, PK) =>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom' 
 import { color } from '../GlobalStyle'
 
 export const Form = styled.form` 
@@ -17,7 +18,7 @@ export const Form = styled.form`
   } 
 `
 
-export const Button = styled.button`
+export const Button = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;

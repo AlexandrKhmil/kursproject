@@ -1,7 +1,10 @@
 const initialState = {
   isReady: false,
 	items: [],
-	sortType: 'none'
+	sortType: 'none',
+	priceRange: null,
+	productCategoriesAllowed: "All",
+	searchProduct: null
 }
 
 export default (state = initialState, action) => {
@@ -16,6 +19,21 @@ export default (state = initialState, action) => {
 			return { 
 				...state,
 				sortType: action.value
+			}
+		case 'SET_PRICE_RANGE':
+			return {
+				...state,
+				priceRange: action.value
+			}
+		case 'SET_PRODUCT_CATEGORIES_ALLOWED':
+			return {
+				...state,
+				productCategoriesAllowed: action.value
+			}
+		case 'SET_SEARCH_PRODUCT':
+			return {
+				...state,
+				searchProduct: action.value
 			}
 	  default: return state
   }

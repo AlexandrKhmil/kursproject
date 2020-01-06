@@ -24,9 +24,9 @@ export const AsideItem = styled.div`
     align-items: center;
     padding-left: 9px;
     height: 28px;
-    background: ${color.darkGreen};
+    background: ${color.green};
     color: ${color.white};
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.72px;
