@@ -16,13 +16,16 @@ const breadcumbItems = [
   { title : 'All' }
 ]
  
-const mapStateToProps = ({products}) => ({ 
+const mapStateToProps = ({ products, form }) => ({ 
   products: products.items, 
   isReady: products.isReady,
   sortType: products.sortType,
   priceRange: products.priceRange,
   productCategoriesAllowed: products.productCategoriesAllowed,
-  searchProduct: products.searchProduct
+  searchProduct: 
+    form.search != undefined && form.search.values != undefined 
+      ? form.search.values.searchRequest
+      : null 
 })
 
 const mapDispatchToProps = dispatch => ({

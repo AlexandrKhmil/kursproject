@@ -29,12 +29,7 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				productCategoriesAllowed: action.value
-			}
-		case 'SET_SEARCH_PRODUCT':
-			return {
-				...state,
-				searchProduct: action.value
-			}
+			} 
 	  default: return state
   }
 }

@@ -17,8 +17,3 @@ export const setProductCategoriesAllowed = value => ({
   type: 'SET_PRODUCT_CATEGORIES_ALLOWED',
   value: value
 })
-
-export const setSearchProduct = value => ({
-  type: 'SET_SEARCH_PRODUCT',
-  value: value
-})

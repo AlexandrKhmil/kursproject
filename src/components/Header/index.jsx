@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const Header = props => {
-  const { categories, productCategoriesAllowed, setProductCategoriesAllowed, setSearchProduct } = props
+  const { categories, productCategoriesAllowed, setProductCategoriesAllowed } = props
 
   const catalogLinks = [
     { 
@@ -97,10 +97,7 @@ const Header = props => {
                   to={I.link} 
                   className={I.className} 
                   activeClassName="current"
-                  onClick={() => { 
-                    I.onClick()  
-                    setSearchProduct(null)
-                  }}
+                  onClick={() => I.onClick()}
                   exact={true}
                 >
                   {I.title}
@@ -108,11 +105,7 @@ const Header = props => {
               </li>
             )}
           </NavigationCatalog>
-          <SearchForm onChange = {values => 
-              setSearchProduct(values.searchRequest !== undefined 
-                ? values.searchRequest : null)}
-              onSubmit={() => {}} 
-          />
+          <SearchForm onSubmit={() => {}} />
         </Container>
       </HeaderBottom>
     </header> 
