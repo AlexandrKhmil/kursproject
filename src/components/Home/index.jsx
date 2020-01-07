@@ -42,7 +42,7 @@ const Home = props => {
       <SubscribeRow>
 				<img src="static/jpg/SubscribeRow.jpg" alt="Subscribe Row Background" />
 				<h2>Subscribe for get offer update</h2>
-				<p>Подпишитесь чтобы получать первым информацию об акциях и новых товарах</p> 
+				<p>Подпишитесь чтобы получать первым информацию об акциях и новых товарах111</p> 
         <SubscribeForm onSubmit={() => {}}/>
 			</SubscribeRow>
     </main>
