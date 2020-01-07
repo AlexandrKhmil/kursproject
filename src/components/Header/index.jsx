@@ -77,8 +77,8 @@ const Header = props => {
       <HeaderMiddle>
         <Container>
           <Logo to="/">
-            <span>LO</span>
-            <span>GO</span>
+            <span>WEST</span>
+            <span>MART</span>
           </Logo>
           <UserPanel>
             <LogInPanel>

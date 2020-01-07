@@ -163,6 +163,9 @@ export const CloseButton = styled(LinkButton)`
   background: ${color.gray};
   border-bottom: 2px solid ${color.darkGray};
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 `
 
 export const TotalPrice = styled.div`

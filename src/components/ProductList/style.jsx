@@ -5,10 +5,10 @@ export const List = styled.div`
   display: flex;
   align-items: flex-start; 
   flex-wrap: wrap; 
-  margin: 0 -14px;
+  margin: 0 -9px;
 
   & > div {
-    margin: 0 10px;
+    margin: 0 9px;
     flex-wrap: wrap;
   }
 `

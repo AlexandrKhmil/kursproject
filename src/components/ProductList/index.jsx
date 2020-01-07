@@ -6,7 +6,7 @@ import * as CartActions from '../../actions/cart'
 import { PriceBlock, RatingBlock } from '../ProductItem'
 import { List, Item } from './style' 
 
-const mapStateToProps = ({}) => ({})
+const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(CartActions, dispatch)
@@ -19,7 +19,7 @@ const ProductList = props => {
       { items.map((I, K) => 
         <Item key={K}>
           <img src={I.imgURL} alt="Product" />
-          <RatingBlock> { /* {I.rating} */}
+          <RatingBlock> 
             <div>
               <ul> 
                 { new Array(5).fill(1).map((I, K) => <li key={K}></li>) }

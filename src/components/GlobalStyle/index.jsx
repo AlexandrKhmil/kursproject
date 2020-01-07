@@ -2,6 +2,7 @@ import { createGlobalStyle  } from 'styled-components'
  
 export const color = { 
   white: '#ffffff',
+  whiteTransition: 'rgba(255, 255, 255, 0.5)',
   gray: '#e0e0e0',
   darkGray: '#d9d9d9',
   lightGray: '#f3f3f3',
