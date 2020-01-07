@@ -12,6 +12,7 @@ const Footer = () =>
     </FooterMiddle>
 
     <FooterBottom> 
+      <p>Курсовой проект. Разрабатывал Хмель, Литус, Бабич, Быков, Рубан</p>
     </FooterBottom>
   </footer>
 

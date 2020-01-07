@@ -14,7 +14,8 @@ import { Container } from './style'
 
 const pagesLinks = [
   { title: 'Home', link: '/' }, 
-  { title: 'Account', link: '/Account' }
+  { title: 'Account', link: '/account' },
+  { title: 'Checkout', link: '/checkout' }
 ]  
 
 const mapStateToProps = ({products, cart}) => ({ 

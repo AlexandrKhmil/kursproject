@@ -11,6 +11,8 @@ import Footer from '../Footer'
 import Home from '../Home'
 import Catalog from '../Catalog'
 import Product from '../Product'
+import Checkout from '../Checkout'
+import Account from '../Account'
 
 const mapStateToProps = () => ({ })
 
@@ -41,6 +43,8 @@ class App extends React.Component {
         <Route exact path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />
         <Route path="/product/:productID" component={ Product } /> 
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/account" component={Account} />
         <Footer />
       </BrowserRouter>
     )
