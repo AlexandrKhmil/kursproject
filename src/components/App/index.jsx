@@ -10,6 +10,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import Home from '../Home'
 import Catalog from '../Catalog'
+import Product from '../Product'
 
 const mapStateToProps = () => ({ })
 
@@ -39,6 +40,7 @@ class App extends React.Component {
         <Header />
         <Route exact path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />
+        <Route path="/product/:productID" component={ Product } /> 
         <Footer />
       </BrowserRouter>
     )

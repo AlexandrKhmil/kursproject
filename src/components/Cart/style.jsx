@@ -130,12 +130,17 @@ export const CartTopArrow = styled.img`
   height: 7px; 
 `
 
+export const CartButtons = styled.div`
+  display: flex;
+  margin: 5px 15px;
+  align-items: flex-end;
+`
+ 
 export const LinkButton = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
-  margin: 5px 15px;
+  flex-grow: 1; 
   height: 32px;
   background: ${color.green};
   border-bottom: 2px solid ${color.darkGreen};
@@ -147,11 +152,17 @@ export const LinkButton = styled(NavLink)`
     opacity: 0.8;
   }
 
-  &:active { 
-    margin-top: 7px;
+  &:active {  
     height: 30px;
-    border-bottom: 0;
+    border-bottom: 0; 
   }
+`
+
+export const CloseButton = styled(LinkButton)`
+  margin-right: 5px;
+  background: ${color.gray};
+  border-bottom: 2px solid ${color.darkGray};
+  cursor: pointer;
 `
 
 export const TotalPrice = styled.div`
@@ -170,4 +181,4 @@ export const TotalPrice = styled.div`
     text-transform: uppercase;
   }
 
-`
+` 

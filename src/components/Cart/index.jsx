@@ -2,7 +2,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as CartActions from '../../actions/cart'
-import { CartBlock, CartBlockItemList, CartBlockItem, CartTopArrow, LinkButton, TotalPrice } from './style'
+import * as ModalActions from '../../actions/modals'
+import { CartBlock, CartBlockItemList, CartBlockItem, CartTopArrow, CartButtons, CloseButton, LinkButton, TotalPrice } from './style'
 
 const mapStateToProps = ({cart, products, modals}) => ({
   status: modals.cart,
@@ -10,11 +11,11 @@ const mapStateToProps = ({cart, products, modals}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(CartActions, dispatch)
+  ...bindActionCreators({...CartActions, ...ModalActions}, dispatch)
 }) 
 
 const Cart = props => {
-  const { products, status, addProductToCart, removeProductFromCart, deleteProductFromCart } = props
+  const { products, status, addProductToCart, removeProductFromCart, deleteProductFromCart, toggleCart } = props
   return ( 
     <> {
       status 
@@ -33,7 +34,7 @@ const Cart = props => {
                   </ul>
                 </div>
                 <div>
-                  <p>{item.price} грн</p>
+                  <p>{item.price * item.count} грн</p>
                   <div>
                     <button onClick={() => addProductToCart(item.id)}>+</button>
                     <button onClick={() => removeProductFromCart(item.id)}>-</button>
@@ -49,9 +50,14 @@ const Cart = props => {
             <p>Total excluding delivry:</p>
             <p>{products.reduce((prev,item) => prev + item.count * item.price, 0)} грн</p>
           </TotalPrice>
-          <LinkButton to='/checkout'>
-            Continue to checkout
-          </LinkButton>
+          <CartButtons>
+            <CloseButton as="button" onClick={() => toggleCart()}>
+              Close
+            </CloseButton>
+            <LinkButton to='/checkout'>
+              Continue to checkout
+            </LinkButton>
+          </CartButtons> 
         </CartBlock>
         : null
       }

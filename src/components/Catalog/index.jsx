@@ -10,11 +10,6 @@ import Breadcumbs from '../Breadcumbs'
 import { Aside, AsideItem, AsideList } from '../Aside' 
 import FactsBlock from '../FactsBlock' 
 import { Container, MainContainer, ProductList } from './style'
-
-const breadcumbItems = [ 
-  { title : 'Catalog', link : '/catalog' },
-  { title : 'All' }
-]
  
 const mapStateToProps = ({ products, form }) => ({ 
   products: products.items,  
@@ -34,6 +29,11 @@ const mapDispatchToProps = dispatch => ({
 const Catalog = props => {
   const { sortType, priceRange, productCategoriesAllowed, searchProduct, setSortType, setPriceRange } = props
   let { products } = props
+
+  const breadcumbItems = [ 
+    { title : 'Catalog', link : '/catalog' },
+    { title : productCategoriesAllowed }
+  ]
 
   const AsideItems = [ 
     { 
@@ -99,4 +99,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Catalog)
- 

@@ -29,7 +29,7 @@ const ProductList = props => {
               </ul>
             </div>
           </RatingBlock>
-          <NavLink to={`/product/${I}`}>{I.name}</NavLink>
+          <NavLink to={`/product/${I.id}`}>{I.name}</NavLink>
           <PriceBlock className="priceBlock">
             <span>{I.price} грн</span>
           </PriceBlock> 
