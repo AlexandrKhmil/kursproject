@@ -2,8 +2,9 @@ import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { loadProducts } from '../../firebase'
+import { loadProducts, loadBannerProducts } from '../../firebase'
 import * as ProductActions from '../../actions/products'
+import * as SlidesActions from '../../actions/slides'
 import { GlobalStyle } from '../GlobalStyle'
 import Header from '../Header'
 import Footer from '../Footer'
@@ -13,16 +14,22 @@ import Catalog from '../Catalog'
 const mapStateToProps = () => ({ })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(ProductActions, dispatch)
+  ...bindActionCreators({...ProductActions, ...SlidesActions}, dispatch)
 }) 
 
 class App extends React.Component {
   async componentWillMount() {
-    // Loading list of products to State
-    const { setProducts } = this.props
+    const { setProducts, setBannerProducts } = this.props
+
+    // Loading list of products to State  
     let products = await loadProducts() 
     products = Object.entries(products).map(I => Object({ id: I[0], ...I[1] }))
     setProducts(products)
+
+    // Set slides products
+    let bannerItems = await loadBannerProducts()
+    bannerItems = Object.values(bannerItems)
+    setBannerProducts(bannerItems)
   }
 
   render() {

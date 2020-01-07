@@ -52,6 +52,17 @@ export const loadProducts = async () => {
   return P 
 }
 
+// Load Products in Banner
+export const loadBannerProducts = () => {
+	return db.collection('bannerProducts').get().then(querySnapshot => {
+    let R = {} 
+		querySnapshot.forEach(doc => 
+      R = { ...R, [doc.id]: doc.data() }   
+    ) 
+		return R
+	})
+}
+
 // Write Functions
 
 export const placeOrder = (data) => {

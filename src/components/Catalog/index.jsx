@@ -17,13 +17,12 @@ const breadcumbItems = [
 ]
  
 const mapStateToProps = ({ products, form }) => ({ 
-  products: products.items, 
-  isReady: products.isReady,
+  products: products.items,  
   sortType: products.sortType,
   priceRange: products.priceRange,
   productCategoriesAllowed: products.productCategoriesAllowed,
   searchProduct: 
-    form.search != undefined && form.search.values != undefined 
+    form.search !== undefined && form.search.values !== undefined 
       ? form.search.values.searchRequest
       : null 
 })
@@ -33,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const Catalog = props => {
-  const { isReady, sortType, priceRange, productCategoriesAllowed, searchProduct, setSortType, setPriceRange } = props
+  const { sortType, priceRange, productCategoriesAllowed, searchProduct, setSortType, setPriceRange } = props
   let { products } = props
 
   const AsideItems = [ 
