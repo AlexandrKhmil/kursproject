@@ -1,10 +1,19 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as CartActions from '../../actions/cart'
 import { PriceBlock, RatingBlock } from '../ProductItem'
 import { List, Item } from './style' 
 
+const mapStateToProps = ({}) => ({})
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(CartActions, dispatch)
+}) 
+
 const ProductList = props => {
-  const { items } = props
+  const { items, addProductToCart } = props
   return (
     <List>
       { items.map((I, K) => 
@@ -12,19 +21,11 @@ const ProductList = props => {
           <img src={I.imgURL} alt="Product" />
           <RatingBlock> { /* {I.rating} */}
             <div>
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+              <ul> 
+                { new Array(5).fill(1).map((I, K) => <li key={K}></li>) }
               </ul>
               <ul style={{height: `calc(100%  * ${I.rating / 100})`}}>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                { new Array(5).fill(1).map((I, K) => <li key={K}></li>) }
               </ul>
             </div>
           </RatingBlock>
@@ -32,12 +33,15 @@ const ProductList = props => {
           <PriceBlock className="priceBlock">
             <span>{I.price} грн</span>
           </PriceBlock> 
-          <button onClick={ () => {} }>Add to cart</button>
+          <button onClick={ () => addProductToCart(I.id) }>Add to cart</button>
         </Item> 
         )
       }
     </List>
   )
 }
-  
-export default ProductList
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProductList) 

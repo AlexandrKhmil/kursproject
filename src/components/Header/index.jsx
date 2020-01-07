@@ -3,9 +3,12 @@ import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as ProductActions from '../../actions/products'
+import * as ModalsActions from '../../actions/modals'
 import SearchForm from '../SearchForm'
+import Cart from '../Cart'
 import { HeaderTop, NavigationPages } from './HeaderTop'
-import { HeaderMiddle, Logo, UserPanel, LogInPanel, TextButton, BasketButton, ButtonCounter } from './HeaderMiddle'
+import { HeaderMiddle, Logo, UserPanel, LogInPanel, 
+  TextButton, BasketButtonWrapper, BasketButton, ButtonCounter } from './HeaderMiddle'
 import { HeaderBottom, NavigationCatalog } from './HeaderBottom'
 import { Container } from './style' 
 
@@ -14,22 +17,25 @@ const pagesLinks = [
   { title: 'Account', link: '/Account' }
 ]  
 
-const mapStateToProps = ({products}) => ({ 
+const mapStateToProps = ({products, cart}) => ({ 
   categories: products.items.reduce((prev, item) => 
     prev.indexOf(item.category) === -1 
       ? [...prev, item.category] 
       : prev, 
   []),
+  cartItemsCount: cart.reduce((prev, item) => 
+    prev + item.count, 
+  0),
   isReady: products.isReady,
   productCategoriesAllowed: products.productCategoriesAllowed
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(ProductActions, dispatch)
+  ...bindActionCreators({...ProductActions, ...ModalsActions}, dispatch)
 }) 
 
 const Header = props => {
-  const { categories, productCategoriesAllowed, setProductCategoriesAllowed } = props
+  const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed, toggleCart } = props
 
   const catalogLinks = [
     { 
@@ -80,10 +86,13 @@ const Header = props => {
               or
               <TextButton>Create Account</TextButton>
             </LogInPanel> 
-            <BasketButton>
-              <ButtonCounter>3</ButtonCounter>
-              <img src="../static/svg/basket.svg" alt="Basket Button" />
-            </BasketButton> 
+            <BasketButtonWrapper>
+              <BasketButton onClick={() => toggleCart()}>
+                <ButtonCounter>{cartItemsCount > 9 ? '9+' : cartItemsCount}</ButtonCounter>
+                <img src="../static/svg/basket.svg" alt="Basket Button" /> 
+              </BasketButton> 
+              <Cart />
+            </BasketButtonWrapper> 
           </UserPanel>
         </Container>
       </HeaderMiddle>
@@ -107,7 +116,7 @@ const Header = props => {
           </NavigationCatalog>
           <SearchForm onSubmit={() => {}} />
         </Container>
-      </HeaderBottom>
+      </HeaderBottom> 
     </header> 
   )
 }

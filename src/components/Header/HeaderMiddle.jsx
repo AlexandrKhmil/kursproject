@@ -64,11 +64,19 @@ export const BasketButton = styled.button`
     opacity: 0.9;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   img {
     width: 20px;
     height: 20px;
     filter: grayscale(1) invert(1);
   }
+`
+
+export const BasketButtonWrapper = styled.div`
+  position: relative;
 `
 
 export const ButtonCounter = styled.div`
