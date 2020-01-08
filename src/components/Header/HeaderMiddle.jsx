@@ -96,3 +96,52 @@ export const ButtonCounter = styled.div`
   color: ${color.white};
   font-size: 10px; 
 `
+
+export const UserBlock = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  padding: 0 15px;
+  height: 50px;
+  background: ${color.lightGray};
+  border: 1px solid ${color.darkGray};
+  border-radius: 17px;
+
+  h4 {
+    display: flex;
+    padding: 5px 0; 
+    font-size: 16px;
+    color: ${color.black};
+    font-weight: 400;
+    a {
+      padding: 0 5px;
+      color: ${color.green};
+      font-weight: 700;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  } 
+
+  button { 
+    padding: 0 10px;
+    height: 30px;
+    background: ${color.green};
+    border-bottom: 2px solid ${color.darkGreen};
+    border-radius: 17px;
+    color: ${color.white};
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      margin-top: 2px;
+      height: 28px;
+      border-bottom: 0;
+    }
+  }
+`

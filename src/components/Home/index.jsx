@@ -9,7 +9,7 @@ import FactsBlock from '../FactsBlock'
 import SubscribeForm from '../SubscribeForm'
 import Container from '../Container'
 import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './style';
-import { SliderBannerBlock, SubscribeRow } from './style'
+import { SliderBannerBlock, SubscribeRow } from './style' 
 
 const mapStateToProps = ({ products, slides }) => ({ 
   products: products.items, 
@@ -25,7 +25,7 @@ const Home = props => {
  
   const newItems = sortProducts(products, 'date_descending').slice(0, 4) 
   const recomended = products.slice(4, 8)
-  const topRating = sortProducts(products, 'rating_descending').slice(0, 4)
+	const topRating = sortProducts(products, 'rating_descending').slice(0, 4) 
 
   return (
     <main>

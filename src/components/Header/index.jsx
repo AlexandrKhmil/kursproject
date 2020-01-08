@@ -8,9 +8,11 @@ import SearchForm from '../SearchForm'
 import Cart from '../Cart'
 import { HeaderTop, NavigationPages } from './HeaderTop'
 import { HeaderMiddle, Logo, UserPanel, LogInPanel, 
-  TextButton, BasketButtonWrapper, BasketButton, ButtonCounter } from './HeaderMiddle'
+  TextButton, BasketButtonWrapper, BasketButton, ButtonCounter,
+  UserBlock } from './HeaderMiddle'
 import { HeaderBottom, NavigationCatalog } from './HeaderBottom'
 import { Container } from './style' 
+import { signOut } from '../../firebase'
 
 const pagesLinks = [
   { title: 'Home', link: '/' }, 
@@ -18,7 +20,7 @@ const pagesLinks = [
   { title: 'Checkout', link: '/checkout' }
 ]  
 
-const mapStateToProps = ({products, cart}) => ({ 
+const mapStateToProps = ({products, cart, user}) => ({ 
   categories: products.items.reduce((prev, item) => 
     prev.indexOf(item.category) === -1 
       ? [...prev, item.category] 
@@ -28,7 +30,8 @@ const mapStateToProps = ({products, cart}) => ({
     prev + item.count, 
   0),
   isReady: products.isReady,
-  productCategoriesAllowed: products.productCategoriesAllowed
+  productCategoriesAllowed: products.productCategoriesAllowed,
+  user: user
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -36,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const Header = props => {
-  const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed } = props
+  const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed, user } = props
   const { toggleCart, toggleAuth, toggleRegistration } = props
 
   const catalogLinks = [
@@ -83,11 +86,18 @@ const Header = props => {
             <span>MART</span>
           </Logo>
           <UserPanel>
-            <LogInPanel>
-              <TextButton onClick={() => toggleAuth()}>Log In</TextButton>
-              or
-              <TextButton onClick={() => toggleRegistration()}>Create Account</TextButton>
-            </LogInPanel> 
+            {
+              user === null 
+              ? <LogInPanel>
+                  <TextButton onClick={() => toggleAuth()}>Log In</TextButton>
+                  or
+                  <TextButton onClick={() => toggleRegistration()}>Create Account</TextButton>
+                </LogInPanel> 
+              : <UserBlock>
+                  <h4>Добро пожаловать <NavLink to="/account">{user.email}</NavLink></h4> 
+                  <button onClick={signOut}>Выйти</button>
+                </UserBlock>
+            } 
             <BasketButtonWrapper>
               <BasketButton onClick={() => toggleCart()}>
                 <ButtonCounter>{cartItemsCount > 9 ? '9+' : cartItemsCount}</ButtonCounter>

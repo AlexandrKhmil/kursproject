@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { loadProducts, loadBannerProducts } from '../../firebase'
 import * as ProductActions from '../../actions/products'
 import * as SlidesActions from '../../actions/slides'
+import * as UserActions from '../../actions/user'
 import { GlobalStyle } from '../GlobalStyle'
 import Header from '../Header'
 import Footer from '../Footer'
@@ -14,17 +15,18 @@ import Home from '../Home'
 import Catalog from '../Catalog'
 import Product from '../Product'
 import Checkout from '../Checkout'
-import Account from '../Account'
+import Account from '../Account'  
+import { firebaseAuth } from '../../firebase'
 
 const mapStateToProps = () => ({ })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({...ProductActions, ...SlidesActions}, dispatch)
+  ...bindActionCreators({...ProductActions, ...SlidesActions, ...UserActions}, dispatch)
 }) 
 
 class App extends React.Component {
   async componentWillMount() {
-    const { setProducts, setBannerProducts } = this.props
+    const { setProducts, setBannerProducts, setUser } = this.props
 
     // Loading list of products to State  
     let products = await loadProducts() 
@@ -35,11 +37,27 @@ class App extends React.Component {
     let bannerItems = await loadBannerProducts()
     bannerItems = Object.values(bannerItems)
     setBannerProducts(bannerItems)
+
+    // User Stuff 
+    firebaseAuth.onAuthStateChanged(function(user) {
+      if (user) { 
+        // var displayName = user.displayName;
+        var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;   
+        setUser({ email: email })
+      } else {   
+        setUser(null)
+      }
+    })
   }
 
-  render() {
+  render() {  
     return (
-      <BrowserRouter>
+      <BrowserRouter> 
         <GlobalStyle />
         <Header />
         {/* Modals */}

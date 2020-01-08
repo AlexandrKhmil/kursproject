@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import * as ModalActions from '../../actions/modals'
 import { Form, Buttons } from './style'
 
-const mapStateToProps = () => ({})
+const mapStateToProps = ({}) => ({ 
+})
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(ModalActions, dispatch)
@@ -32,10 +33,10 @@ const RegistrationForm = props => {
         name="passwordRepeat"
         component="input"
         type="password"
-        placeholder="Repaer password..."
+        placeholder="Repeat password..."
       />
       <Buttons>
-        <button>Enter</button>
+        <button type="submit">Enter</button>
         <button onClick={() => toggleRegistration()}>Close</button>
       </Buttons> 
     </Form>
@@ -46,5 +47,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(reduxForm({
-  form: 'Registr' 
+  form: 'registr' 
 })(RegistrationForm))

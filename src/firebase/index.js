@@ -1,5 +1,7 @@
 import firebase from 'firebase'
+import "firebase/auth"
 require('firebase/firestore')
+
 
 let firebaseConfig = {
 	apiKey: "AIzaSyDS2NxCJHQeHiVfJ_5OM2tbYeLM8mISBOE",
@@ -63,7 +65,35 @@ export const loadBannerProducts = () => {
 	})
 }
 
-// Write Functions
+// Registration
+
+export const registrateUser = (email, password) => {
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) { 
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		console.log(errorCode)
+		console.log(errorMessage)
+	})
+}
+
+// Auth 
+export const authUser = (email, password) => {
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		console.log(errorCode)
+		console.log(errorMessage)
+	});
+}
+
+// SignOut
+
+export const signOut = () => {
+	firebase.auth().signOut()
+}
+ 
+// Get User Data   
+export let firebaseAuth = firebase.auth() 
 
 export const placeOrder = (data) => {
 	db.collection("orders").add(data)
@@ -75,3 +105,4 @@ export const placeOrder = (data) => {
 		console.error("Error writing document: ", error);
 	});
 }
+ 
