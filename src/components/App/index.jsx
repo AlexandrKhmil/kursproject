@@ -8,6 +8,7 @@ import * as SlidesActions from '../../actions/slides'
 import { GlobalStyle } from '../GlobalStyle'
 import Header from '../Header'
 import Footer from '../Footer'
+import Login from '../Login'
 import Home from '../Home'
 import Catalog from '../Catalog'
 import Product from '../Product'
@@ -40,6 +41,9 @@ class App extends React.Component {
       <BrowserRouter>
         <GlobalStyle />
         <Header />
+        {/* Modals */}
+        { /* <Login /> */ }
+        {/* Pages */}
         <Route exact path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />
         <Route path="/product/:productID" component={ Product } /> 
