@@ -31,6 +31,15 @@ export const AsideItem = styled.div`
     text-transform: uppercase;
     letter-spacing: 0.72px;
   } 
+
+  & > p {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px dotted ${color.gray};
+    color: ${color.darkGray};
+    font-size: 14px;
+  }
 `
 
 export const AsideList = styled.ul`
@@ -79,4 +88,4 @@ export const AsideList = styled.ul`
       opacity: 0.8;
     }
   }
-`
+` 

@@ -52,7 +52,8 @@ const Catalog = props => {
       items: [ 
         { title: 'до 5 000', onClick: () => setPriceRange({min: 0, max: 5000}) }, 
         { title: '5000 - 10 000', onClick: () => setPriceRange({min: 5000, max: 10000}) }, 
-        { title: 'Больше 10 000', onClick: () => setPriceRange({min: 10000, max: null}) }
+        { title: 'Больше 10 000', onClick: () => setPriceRange({min: 10000, max: null}) },
+        { title: 'Все', onClick: () => setPriceRange({min: 0, max: null}) }
       ]
     },
   ] 

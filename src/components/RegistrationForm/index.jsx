@@ -28,6 +28,12 @@ const RegistrationForm = props => {
         type="password"
         placeholder="Your password..."
       />
+      <Field 
+        name="passwordRepeat"
+        component="input"
+        type="password"
+        placeholder="Repaer password..."
+      />
       <Buttons>
         <button>Enter</button>
         <button onClick={() => toggleRegistration()}>Close</button>

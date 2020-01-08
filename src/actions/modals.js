@@ -9,3 +9,8 @@ export const toggleAuth = () => ({
 export const toggleRegistration = () => ({
   type: 'TOGGLE_MODAL_REGISTRATION'
 })
+
+export const toggleError = text => ({
+  type: 'TOGGLE_MODAL_ERROR',
+  text: text
+})
