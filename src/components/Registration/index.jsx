@@ -3,27 +3,27 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as ModalActions from '../../actions/modals'
 import Modal from '../Modal'
-import LoginForm from '../LoginForm'
-import { LoginInner } from './style'
+import RegistrationForm from '../RegistrationForm'
+import { RegistrationInner } from './style'
 
 const mapStateToProps = ({modals}) => ({
-  isOpen: modals.auth 
+  isOpen: modals.registration 
 })
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(ModalActions, dispatch)
 }) 
 
-const Login = props => {
-  const { isOpen, toggleAuth } = props
+const Registration = props => {
+  const { isOpen, toggleRegistration } = props
   return (
     <>
       { isOpen 
-        ? <Modal closeAction={toggleAuth}>
-            <LoginInner>
-              <h4>Авторизация</h4>
-              <LoginForm onSubmit={() => {}} />
-            </LoginInner>
+        ? <Modal closeAction={toggleRegistration}>
+            <RegistrationInner>
+              <h4>Регистрация</h4>
+              <RegistrationForm onSubmit={() => {}} />
+            </RegistrationInner>
           </Modal>
         : null
       }
@@ -34,4 +34,4 @@ const Login = props => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Login)
+)(Registration)

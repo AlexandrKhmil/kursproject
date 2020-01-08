@@ -11,8 +11,8 @@ const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(ModalActions, dispatch)
 }) 
 
-const LoginForm = props => {
-  const { handleSubmit, toggleAuth } = props
+const RegistrationForm = props => {
+  const { handleSubmit, toggleRegistration } = props
   
   return (
     <Form onSubmit={handleSubmit}>
@@ -30,7 +30,7 @@ const LoginForm = props => {
       />
       <Buttons>
         <button>Enter</button>
-        <button onClick={() => toggleAuth()}>Close</button>
+        <button onClick={() => toggleRegistration()}>Close</button>
       </Buttons> 
     </Form>
   )
@@ -40,5 +40,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(reduxForm({
-  form: 'Auth' 
-})(LoginForm))
+  form: 'Registr' 
+})(RegistrationForm))

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { color } from '../GlobalStyle'
 
-export const LoginInner = styled.div`
+export const RegistrationInner = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;

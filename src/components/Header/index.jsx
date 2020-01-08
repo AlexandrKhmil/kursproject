@@ -36,7 +36,8 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const Header = props => {
-  const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed, toggleCart } = props
+  const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed } = props
+  const { toggleCart, toggleAuth, toggleRegistration } = props
 
   const catalogLinks = [
     { 
@@ -83,9 +84,9 @@ const Header = props => {
           </Logo>
           <UserPanel>
             <LogInPanel>
-              <TextButton>Log In</TextButton>
+              <TextButton onClick={() => toggleAuth()}>Log In</TextButton>
               or
-              <TextButton>Create Account</TextButton>
+              <TextButton onClick={() => toggleRegistration()}>Create Account</TextButton>
             </LogInPanel> 
             <BasketButtonWrapper>
               <BasketButton onClick={() => toggleCart()}>

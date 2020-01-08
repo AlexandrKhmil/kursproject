@@ -1,3 +1,11 @@
 export const toggleCart = () => ({
-  type: 'TOGGLE_MODAL'
+  type: 'TOGGLE_MODAL_CART'
+})
+
+export const toggleAuth = () => ({
+  type: 'TOGGLE_MODAL_AUTH'
+})
+
+export const toggleRegistration = () => ({
+  type: 'TOGGLE_MODAL_REGISTRATION'
 })

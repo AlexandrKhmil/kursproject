@@ -9,6 +9,7 @@ import { GlobalStyle } from '../GlobalStyle'
 import Header from '../Header'
 import Footer from '../Footer'
 import Login from '../Login'
+import Registration from '../Registration'
 import Home from '../Home'
 import Catalog from '../Catalog'
 import Product from '../Product'
@@ -42,7 +43,8 @@ class App extends React.Component {
         <GlobalStyle />
         <Header />
         {/* Modals */}
-        { /* <Login /> */ }
+        <Login />
+        <Registration />
         {/* Pages */}
         <Route exact path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />
