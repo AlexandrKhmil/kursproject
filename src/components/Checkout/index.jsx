@@ -1,10 +1,13 @@
 import React from 'react'
+import Container from '../Container'
 
 const Checkout = props => {
   return (
-    <div>
-      Checkout
-    </div>
+    <main> 
+      <Container>
+
+      </Container>
+    </main>
   )
 }
 

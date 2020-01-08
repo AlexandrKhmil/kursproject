@@ -9,7 +9,7 @@ export const FooterBottom = styled.div`
   background: ${color.green};
 
   p {
-    color: ${color.black}
+    color: ${color.black};
     font-size: 14px;
   }
 `

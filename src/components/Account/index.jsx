@@ -1,10 +1,12 @@
 import React from 'react'
+import Container from '../Container'
 
 const Account = props => {
   return (
-    <div>
-      account
-    </div>
+    <main>
+      <Container>
+      </Container>
+    </main>
   )
 }
 

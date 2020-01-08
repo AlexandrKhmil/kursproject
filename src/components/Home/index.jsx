@@ -7,7 +7,9 @@ import SliderBanner from '../SliderBanner'
 import ProductBlockSlider from '../ProductBlockSlider'
 import FactsBlock from '../FactsBlock'
 import SubscribeForm from '../SubscribeForm'
-import { SliderBannerBlock, SubscribeRow } from './style.jsx'
+import Container from '../Container'
+import { StockBannerRow, DiscountPriceBlock, OldPrice, NewPrice, StockBannerInner } from './style';
+import { SliderBannerBlock, SubscribeRow } from './style'
 
 const mapStateToProps = ({ products, slides }) => ({ 
   products: products.items, 
@@ -38,6 +40,28 @@ const Home = props => {
 				recomended={recomended}
 				topRating={topRating} 
       />  
+
+      <Container>
+				<StockBannerRow>
+					<DiscountPriceBlock> 
+						<OldPrice>2300 грн</OldPrice>
+						<NewPrice>1150 грн</NewPrice>
+					</DiscountPriceBlock> 
+					<img src="static/jpg/StockBlock.jpg" alt="Stock Block Product" />
+					<StockBannerInner>
+						<h2>50% OFF</h2> 
+						<h3>For Walton Primo GH+</h3>
+						<h4>Power packed performance</h4>
+						<p>
+							Powered by a mighty 1.3 GHz Quad Core Processor and
+							1 GB fast RAM, the Primo GH+ allows seamless multitasking, 
+							faster webpage loading, smoother UI transitions and ultra
+							fast power-up.
+						</p>
+					</StockBannerInner> 
+				</StockBannerRow>
+			</Container>  
+
 
       <SubscribeRow>
 				<img src="static/jpg/SubscribeRow.jpg" alt="Subscribe Row Background" />

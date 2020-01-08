@@ -34,9 +34,13 @@ export const Slide = styled.div`
 		text-transform: uppercase;
 	} 
 
-	img {
-		width: 200px;
-		height: 200px;
+	img { 
+		margin-top: 30px; 
+		width: 350px; 
+		height: 400px;  
+		object-fit: contain; 
+		background: white; 
+		border: 2px solid ${color.green};
 	}
 
 	a {

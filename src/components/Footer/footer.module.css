@@ -1,0 +1,68 @@
+
+/*topBar*/
+.topBar{
+     width: 970px;
+     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    list-style-type: square;
+    background-color: #ebebeb;
+    font-family: 'Open Sans',sans-serif;
+
+ }
+
+.topBar ul{
+    margin-right: 10px;
+    width: 22%;
+    list-style-type: disc;
+}
+
+.topBar li{
+    margin-left: 15px;
+    font-size: 15px;
+    padding: 6px 0 6px;
+}
+
+.topBar li:first-child{
+    font-size: 20px;
+    margin-left: 0;
+    list-style-type: none;
+    color: #6f8a2b;
+    margin-bottom: 15px;
+    margin-top: 40px;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+
+/*middleBar*/
+.middleBar{
+    width: 970px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.middleBar .contact{
+    margin-right: 10px;
+    width: 100%;
+    display: flex;
+}
+
+.middleBar .button{
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0 10px;
+    text-transform: uppercase;
+    color: white;
+    background-color: #6a9919;
+    height: 30px;
+    font-weight: bold;
+}
+
+.middleBar a img{
+    width: 30px;
+    margin-left: 10px;
+}
