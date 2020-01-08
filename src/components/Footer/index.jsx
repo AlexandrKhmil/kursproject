@@ -55,7 +55,7 @@ export default class Footer extends React.Component {
             </MiddleBar>
             
             <BottomBar>
-                <p>Made for coursework</p>
+                <p>Made for coursework1</p>
             </BottomBar> 
         </footer>
     );
