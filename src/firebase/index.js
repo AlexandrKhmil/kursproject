@@ -67,13 +67,13 @@ export const loadBannerProducts = () => {
 
 // Registration
 
-export const registrateUser = (email, password) => {
+export const registrateUser = (email, password) => { 
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) { 
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		console.log(errorCode)
-		console.log(errorMessage)
-	})
+		console.log(errorMessage) 
+	}) 
 }
 
 // Auth 
@@ -83,6 +83,7 @@ export const authUser = (email, password) => {
 		var errorMessage = error.message;
 		console.log(errorCode)
 		console.log(errorMessage)
+		return {errorCode: errorCode, errorMessage: errorMessage}
 	});
 }
 

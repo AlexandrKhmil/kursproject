@@ -16,7 +16,17 @@ const mapDispatchToProps = dispatch => ({
 }) 
 
 const registration = values => {
-  registrateUser(values.email, values.password) 
+  if (values.password.length < 6) {
+    alert("Слишком короткий пароль")
+    return false
+  }
+  if (values.passwordRepeat !== values.password) {
+    alert("Пароли не совпадают")
+    return false
+  } else {
+    registrateUser(values.email, values.password) 
+    return true
+  }  
 }
 
 const Registration = props => {
@@ -27,7 +37,7 @@ const Registration = props => {
         ? <Modal closeAction={toggleRegistration}>
             <RegistrationInner>
               <h4>Регистрация</h4>
-              <RegistrationForm onSubmit={values => { console.log(values); registration(values); } } />
+              <RegistrationForm onSubmit={values => { if (registration(values)) { toggleRegistration() } else { return null } } } />
             </RegistrationInner>
           </Modal>
         : null

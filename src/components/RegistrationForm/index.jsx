@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import * as ModalActions from '../../actions/modals'
 import { Form, Buttons } from './style'
 
-const mapStateToProps = ({}) => ({ 
+const mapStateToProps = () => ({ 
 })
 
 const mapDispatchToProps = dispatch => ({

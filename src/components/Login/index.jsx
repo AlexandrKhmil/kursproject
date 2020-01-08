@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => ({
 
 const auth = values => {
   authUser(values.email, values.password) 
+  return true
 }
 
 const Login = props => {
@@ -27,7 +28,7 @@ const Login = props => {
         ? <Modal closeAction={toggleAuth}>
             <LoginInner>
               <h4>Авторизация</h4>
-              <LoginForm onSubmit={values => auth(values)} />
+              <LoginForm onSubmit={values => { if (auth(values)) { toggleAuth() } else { return null } } } />
             </LoginInner>
           </Modal>
         : null
