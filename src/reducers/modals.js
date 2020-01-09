@@ -2,7 +2,8 @@ const initialState = {
   cart: false,
   auth: false,
   registration: false,
-  error: {status: false, text: ''}
+  error: {status: false, text: ''},
+  message: false
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +16,8 @@ export default (state = initialState, action) => {
       return {...state, registration: !state.registration}
     case 'TOGGLE_MODAL_ERROR':
       return {...state, error: { status: !state.error.status, text: action.text } } 
+    case 'TOGGLE_MESSAGE':
+      return {...state, message: !state.message}
     default: return state
   }
 }

@@ -12,3 +12,7 @@ export const deleteProductFromCart = productId => ({
   type: 'DELETE_PRODUCT_FROM_CART',
   productId: productId
 })
+
+export const clearCart = () => ({
+  type: 'CLEAR_CART',
+})

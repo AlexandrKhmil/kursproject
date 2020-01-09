@@ -8,7 +8,7 @@ import { registrateUser } from '../../firebase'
 import { RegistrationInner } from './style' 
 
 const mapStateToProps = ({modals}) => ({
-  isOpen: modals.registration 
+  isOpen: modals.registration
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -37,7 +37,9 @@ const Registration = props => {
         ? <Modal closeAction={toggleRegistration}>
             <RegistrationInner>
               <h4>Регистрация</h4>
-              <RegistrationForm onSubmit={values => { if (registration(values)) { toggleRegistration() } else { return null } } } />
+              <RegistrationForm 
+                onSubmit={values => { if (registration(values)) { toggleRegistration() } else { return null } } }  
+              />
             </RegistrationInner>
           </Modal>
         : null

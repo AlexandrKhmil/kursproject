@@ -5,6 +5,7 @@ import cart from './cart'
 import modals from './modals'
 import slides from './slides'
 import user from './user'
+import orders from './orders'
 
 export default combineReducers({
   products,
@@ -12,5 +13,6 @@ export default combineReducers({
   modals,
   slides,
   user,
+  orders,
   form: formReducer
 })

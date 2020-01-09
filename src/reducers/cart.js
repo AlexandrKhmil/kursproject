@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
         : state.filter(I => I.id !== action.productId)
     case 'DELETE_PRODUCT_FROM_CART':
       return state.filter(I => I.id !== action.productId)
+    case 'CLEAR_CART':
+      return []
     default:
       return state
   }

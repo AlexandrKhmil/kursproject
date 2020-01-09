@@ -14,3 +14,7 @@ export const toggleError = text => ({
   type: 'TOGGLE_MODAL_ERROR',
   text: text
 })
+
+export const toggleMessage = () => ({
+  type: 'TOGGLE_MESSAGE'
+})

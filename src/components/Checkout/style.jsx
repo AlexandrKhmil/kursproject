@@ -12,6 +12,7 @@ export const InnerCheckout = styled.div`
 export const ProductsList = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 500;
+  margin-bottom: 25px;
+  max-height: 500px;
   overflow-y: auto;
 `

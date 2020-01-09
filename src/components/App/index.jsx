@@ -6,27 +6,47 @@ import { loadProducts, loadBannerProducts } from '../../firebase'
 import * as ProductActions from '../../actions/products'
 import * as SlidesActions from '../../actions/slides'
 import * as UserActions from '../../actions/user'
+import * as OrdersActions from '../../actions/orders'
 import { GlobalStyle } from '../GlobalStyle'
 import Header from '../Header'
 import Footer from '../Footer'
 import Login from '../Login'
 import Registration from '../Registration'
+import Message from '../Message'
 import Home from '../Home'
 import Catalog from '../Catalog'
 import Product from '../Product'
 import Checkout from '../Checkout'
 import Account from '../Account'  
-import { firebaseAuth } from '../../firebase'
+import { firebaseAuth, getOrders } from '../../firebase'
 
 const mapStateToProps = () => ({ })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({...ProductActions, ...SlidesActions, ...UserActions}, dispatch)
+  ...bindActionCreators(
+    {
+      ...ProductActions, 
+      ...SlidesActions, 
+      ...UserActions, 
+      ...OrdersActions
+    }, 
+    dispatch
+  )
 }) 
 
 class App extends React.Component {
+  async setOrdersFunc(email, setOrders) { 
+    //const { setOrders } = this.props
+    let orders = await getOrders(email) 
+    let userOrders = Object.entries(orders)
+      .map(item => ({id: item[0], ...item[1]}))
+      .filter(item => item.email === email)
+    setOrders(userOrders)
+  }
+  
   async componentWillMount() {
-    const { setProducts, setBannerProducts, setUser } = this.props
+    const { setProducts, setBannerProducts, setUser, setOrders } = this.props
+    let setOrdersFuncInner = this.setOrdersFunc
 
     // Loading list of products to State  
     let products = await loadProducts() 
@@ -48,7 +68,8 @@ class App extends React.Component {
         // var isAnonymous = user.isAnonymous;
         // var uid = user.uid;
         // var providerData = user.providerData;   
-        setUser({ email: email })
+        setUser({ email: email }) 
+        setOrdersFuncInner(email, setOrders)
       } else {   
         setUser(null)
       }
@@ -63,6 +84,7 @@ class App extends React.Component {
         {/* Modals */}
         <Login />
         <Registration />
+        <Message />
         {/* Pages */}
         <Route exact path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />

@@ -18,6 +18,7 @@ firebase.initializeApp(firebaseConfig)
 // Cloud Firestore
 
 const db = firebase.firestore()
+export const timestamp = firebase.firestore.Timestamp
 
 // Storage
 
@@ -82,13 +83,11 @@ export const authUser = (email, password) => {
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		console.log(errorCode)
-		console.log(errorMessage)
-		return {errorCode: errorCode, errorMessage: errorMessage}
+		console.log(errorMessage) 
 	});
 }
 
 // SignOut
-
 export const signOut = () => {
 	firebase.auth().signOut()
 }
@@ -96,14 +95,23 @@ export const signOut = () => {
 // Get User Data   
 export let firebaseAuth = firebase.auth() 
 
+// Place Order
 export const placeOrder = (data) => {
 	db.collection("orders").add(data)
-	.then(function(docRef) { 
-		console.log("Document successfully written!"); 
-		return docRef.id;
-	})
-	.catch(function(error) {
-		console.error("Error writing document: ", error);
-	});
+		.then(function(docRef) { 
+			console.log("Document successfully written!"); 
+			return docRef.id;
+		})
+		.catch(function(error) {
+			console.error("Error writing document: ", error);
+		})
 }
  
+// Get Orders List
+export const getOrders = () => {
+	return db.collection('orders').get().then(querySnapshot => {
+		let R = {}
+		querySnapshot.forEach(doc => R = { ...R, [doc.id]: doc.data()})
+		return R
+	})
+}

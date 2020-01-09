@@ -13,13 +13,7 @@ import { HeaderMiddle, Logo, UserPanel, LogInPanel,
 import { HeaderBottom, NavigationCatalog } from './HeaderBottom'
 import { Container } from './style' 
 import { signOut } from '../../firebase'
-
-const pagesLinks = [
-  { title: 'Home', link: '/' }, 
-  { title: 'Account', link: '/account' },
-  { title: 'Checkout', link: '/checkout' }
-]  
-
+ 
 const mapStateToProps = ({products, cart, user}) => ({ 
   categories: products.items.reduce((prev, item) => 
     prev.indexOf(item.category) === -1 
@@ -41,6 +35,16 @@ const mapDispatchToProps = dispatch => ({
 const Header = props => {
   const { categories, cartItemsCount, productCategoriesAllowed, setProductCategoriesAllowed, user } = props
   const { toggleCart, toggleAuth, toggleRegistration } = props
+
+  const pagesLinks = (user === null) ? [
+    { title: 'Home', link: '/' },  
+    { title: 'Checkout', link: '/checkout' }
+  ] 
+  : [
+    { title: 'Home', link: '/' }, 
+    { title: 'My Orders', link: '/account' },
+    { title: 'Checkout', link: '/checkout' }
+  ]
 
   const catalogLinks = [
     { 
