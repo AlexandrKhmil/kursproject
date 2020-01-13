@@ -92,6 +92,7 @@ class App extends React.Component {
         <Route path="/checkout" component={Checkout} />
         <Route path="/account" component={Account} />
         <Footer />
+        <p>123123123</p>
       </BrowserRouter>
     )
   }
