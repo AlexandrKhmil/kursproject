@@ -18,7 +18,7 @@ class CheckoutForm extends React.Component {
     return (
       <Form onSubmit={!empty ? handleSubmit : () => {}}>
         <label>
-          <h6>Your contact email12123</h6>
+          <h6>Your contact emailhhhhss</h6>
           <Field 
             name="email"
             component="input"
